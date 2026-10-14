@@ -29,20 +29,20 @@ export function SearchClient() {
     <div className="space-y-8">
       {/* Search Bar Input */}
       <div className="max-w-2xl mx-auto">
-        <div className="relative">
+        <div className="relative group">
           <input
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t("placeholder")}
-            className="w-full pl-12 pr-10 py-3.5 bg-white border border-[#DED0BC] rounded-full text-base text-[#2E2620] placeholder-[#8C7B6E] focus:outline-none focus:ring-2 focus:ring-[#E8850A] shadow-xs"
+            className="w-full pl-12 pr-12 py-4 bg-white/95 backdrop-blur-md border border-[#DED0BC]/80 hover:border-[#CDBDA6] focus:border-[#E8850A] rounded-2xl sm:rounded-full text-base text-[#1F1A16] placeholder-[#7D6F63] focus:outline-none focus:ring-4 focus:ring-[#E8850A]/15 shadow-sm transition-all duration-150"
           />
-          <Search className="w-5 h-5 text-[#8C7B6E] absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+          <Search className="w-5 h-5 text-[#7D6F63] group-focus-within:text-[#E8850A] absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none transition-colors" />
           {query && (
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-[#8C7B6E] hover:text-[#2E2620]"
+              className="absolute right-4 top-1/2 -translate-y-1/2 p-1 text-[#7D6F63] hover:text-[#1F1A16] active:scale-90 rounded-full cursor-pointer transition-transform"
               aria-label="Clear search"
             >
               <X className="w-4 h-4" />
@@ -51,14 +51,14 @@ export function SearchClient() {
         </div>
 
         {/* Quick Language Filter */}
-        <div className="flex items-center justify-center gap-2 mt-4 text-xs">
+        <div className="flex items-center justify-center gap-2 mt-5 text-xs">
           <button
             type="button"
             onClick={() => setSelectedLanguage("all")}
-            className={`px-3 py-1 rounded-full font-semibold transition-colors ${
+            className={`px-3.5 py-1.5 rounded-full font-semibold cursor-pointer active:scale-95 transition-all duration-150 ${
               selectedLanguage === "all"
-                ? "bg-[#2E2620] text-white"
-                : "bg-white border border-[#DED0BC] text-[#5C4E42]"
+                ? "bg-[#1F1A16] text-white shadow-xs"
+                : "bg-white/80 border border-[#DED0BC] text-[#54483E] hover:bg-[#EFE7D8]"
             }`}
           >
             {locale === "mr" ? "सर्व भाषा" : "All Languages"}
@@ -66,10 +66,10 @@ export function SearchClient() {
           <button
             type="button"
             onClick={() => setSelectedLanguage("marathi")}
-            className={`px-3 py-1 rounded-full font-semibold transition-colors ${
+            className={`px-3.5 py-1.5 rounded-full font-semibold cursor-pointer active:scale-95 transition-all duration-150 ${
               selectedLanguage === "marathi"
-                ? "bg-[#E8850A] text-white"
-                : "bg-white border border-[#DED0BC] text-[#5C4E42]"
+                ? "bg-[#E8850A] text-white shadow-xs font-devanagari font-bold"
+                : "bg-white/80 border border-[#DED0BC] text-[#54483E] hover:bg-[#EFE7D8]"
             }`}
           >
             मराठी
@@ -77,10 +77,10 @@ export function SearchClient() {
           <button
             type="button"
             onClick={() => setSelectedLanguage("english")}
-            className={`px-3 py-1 rounded-full font-semibold transition-colors ${
+            className={`px-3.5 py-1.5 rounded-full font-semibold cursor-pointer active:scale-95 transition-all duration-150 ${
               selectedLanguage === "english"
-                ? "bg-[#2E2620] text-white"
-                : "bg-white border border-[#DED0BC] text-[#5C4E42]"
+                ? "bg-[#1F1A16] text-white shadow-xs font-bold"
+                : "bg-white/80 border border-[#DED0BC] text-[#54483E] hover:bg-[#EFE7D8]"
             }`}
           >
             English

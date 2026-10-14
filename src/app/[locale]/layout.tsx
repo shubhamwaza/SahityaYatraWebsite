@@ -7,6 +7,7 @@ import { routing } from "@/lib/i18n/routing";
 import type { Locale } from "@/types";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import "@/app/globals.css";
 
 // ── Fonts ──────────────────────────────────────────────────────────────────
 // Mukta: Devanagari, used for Marathi content

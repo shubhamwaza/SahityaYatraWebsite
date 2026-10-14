@@ -100,27 +100,29 @@ export function ProductDetailClient({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         {/* Left Column: Book Cover Presentation (5 cols) */}
         <div className="lg:col-span-5 flex flex-col items-center">
-          <div className="relative w-full max-w-sm aspect-[2/3] rounded-2xl overflow-hidden border border-[#DED0BC] shadow-lg bg-[#F0E8D8]/60">
-            <Image
-              src={book.coverImage}
-              alt={book.coverImageAlt}
-              fill
-              priority
-              sizes="(max-width: 640px) 90vw, (max-width: 1024px) 40vw, 30vw"
-              className="object-cover"
-            />
-            {discountPercent && (
-              <div className="absolute top-4 right-4">
-                <span className="bg-[#C62828] text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md">
-                  {discountPercent}% OFF
-                </span>
-              </div>
-            )}
+          <div className="w-full max-w-sm p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-[#FCFBF7] to-[#F5EFEB] border border-[#DED0BC]/80 shadow-[0_4px_20px_-2px_rgba(31,26,22,0.06)] flex justify-center">
+            <div className="book-spine-3d relative w-full aspect-[2/3] shadow-[0_16px_36px_-4px_rgba(31,26,22,0.22),-6px_0_12px_rgba(0,0,0,0.18)]">
+              <Image
+                src={book.coverImage}
+                alt={book.coverImageAlt}
+                fill
+                priority
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 40vw, 30vw"
+                className="object-cover"
+              />
+              {discountPercent && (
+                <div className="absolute top-3 right-3 z-20">
+                  <span className="bg-[#C62828] text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md tracking-tight">
+                    {discountPercent}% OFF
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
 
-          <p className="text-[11px] text-[#8C7B6E] text-center mt-3">
+          <p className="text-[11px] text-[#7D6F63] text-center mt-3 font-medium">
             {locale === "mr"
-              ? "मूळ व अधिकृत आवृत्ती • छापील पुस्तक"
+              ? "मूळ व अधिकृत आवृत्ती • भौतिक छापील पुस्तक"
               : "Authentic Edition • Physical Print Copy"}
           </p>
         </div>
@@ -351,7 +353,7 @@ export function ProductDetailClient({
 
       {/* Smart Mobile Sticky Purchase Bar (Design.md Section 9.4) */}
       <div
-        className={`fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#DED0BC] p-3 shadow-2xl transition-transform duration-300 md:hidden ${
+        className={`fixed bottom-0 inset-x-0 z-40 bg-white/85 backdrop-blur-xl border-t border-[#DED0BC]/70 p-3.5 shadow-[0_-8px_24px_rgba(31,26,22,0.1)] transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] md:hidden ${
           showStickyBar ? "translate-y-0" : "translate-y-full"
         }`}
       >

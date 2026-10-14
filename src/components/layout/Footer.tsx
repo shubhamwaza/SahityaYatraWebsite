@@ -13,15 +13,15 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#2E2620] text-[#DED0BC] border-t border-[#453A32] mt-auto">
+    <footer className="bg-[#16120F] text-[#ECE3D4] border-t border-[#2B231D] mt-auto">
       {/* Main Footer Links */}
       <div className="container-site py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="inline-block">
+            <Link href="/" className="inline-block active:scale-98 transition-transform">
               {/* Logo in negative / brightened container for dark footer */}
-              <div className="bg-[#F8F4EC] p-2.5 rounded-lg inline-block shadow-sm">
+              <div className="bg-[#FCFBF7] p-2.5 rounded-xl inline-block shadow-sm border border-white/20">
                 <Image
                   src="/images/logo.png"
                   alt="SahityaYatra"
@@ -32,7 +32,7 @@ export function Footer() {
               </div>
             </Link>
 
-            <p className="text-sm text-[#DED0BC]/80 max-w-sm leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#ECE3D4]/80 max-w-sm leading-relaxed">
               {locale === "mr"
                 ? "साहित्ययात्रा ही मराठी व इंग्रजी साहित्याची विश्वासू ग्रंथदालन आहे. प्रदर्शन व ऑनलाइन माध्यमांद्वारे आम्ही भारतभरातील वाचकांपर्यंत समृद्ध पुस्तके पोहोचवतो."
                 : "SahityaYatra is a dedicated Marathi & English bookstore rooted in offline exhibitions, now bringing carefully curated literature to readers across India."}
@@ -43,7 +43,7 @@ export function Footer() {
                 href="https://www.facebook.com/SahityaYatraShop"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-semibold text-[#F5A020] hover:text-[#E8850A] transition-colors bg-[#453A32]/60 px-3 py-1.5 rounded-full border border-[#DED0BC]/20 hover:border-[#F5A020]/40"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-[#F5A020] hover:text-[#E8850A] transition-colors bg-[#2B231D]/80 hover:bg-[#3D322A] px-3.5 py-1.5 rounded-full border border-white/10 hover:border-[#F5A020]/40 shadow-xs"
               >
                 <span>{t("followUs")}: Facebook.com/SahityaYatraShop</span>
                 <span aria-hidden="true">↗</span>

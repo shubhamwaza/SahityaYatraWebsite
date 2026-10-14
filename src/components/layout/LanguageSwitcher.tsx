@@ -21,12 +21,12 @@ export function LanguageSwitcher({ className = "" }: { className?: string }) {
 
   return (
     <div
-      className={`inline-flex items-center rounded-full bg-[#F0E8D8] p-1 border border-[#DED0BC] ${className}`}
+      className={`inline-flex items-center rounded-full bg-[#EFE7D8]/80 p-0.5 border border-[#DED0BC]/80 shadow-xs ${className}`}
       role="group"
       aria-label={t("language")}
     >
       <span className="sr-only">{t("language")}</span>
-      <div className="pl-1.5 pr-1 text-[#5C4E42]" aria-hidden="true">
+      <div className="pl-2 pr-1 text-[#7D6F63]" aria-hidden="true">
         <Globe className="w-3.5 h-3.5" />
       </div>
 
@@ -34,10 +34,10 @@ export function LanguageSwitcher({ className = "" }: { className?: string }) {
         type="button"
         onClick={() => switchLocale("mr")}
         disabled={isPending}
-        className={`px-2.5 py-1 text-xs font-semibold rounded-full transition-all duration-150 ${
+        className={`px-3 py-1 text-xs font-semibold rounded-full transition-all duration-150 active:scale-95 cursor-pointer ${
           locale === "mr"
-            ? "bg-[#E8850A] text-white shadow-xs"
-            : "text-[#5C4E42] hover:text-[#2E2620]"
+            ? "bg-[#E8850A] text-white shadow-sm font-devanagari font-bold"
+            : "text-[#54483E] hover:text-[#1F1A16] hover:bg-white/40"
         }`}
         aria-pressed={locale === "mr"}
         lang="mr"
@@ -49,10 +49,10 @@ export function LanguageSwitcher({ className = "" }: { className?: string }) {
         type="button"
         onClick={() => switchLocale("en")}
         disabled={isPending}
-        className={`px-2.5 py-1 text-xs font-semibold rounded-full transition-all duration-150 ${
+        className={`px-3 py-1 text-xs font-semibold rounded-full transition-all duration-150 active:scale-95 cursor-pointer ${
           locale === "en"
-            ? "bg-[#2E2620] text-white shadow-xs"
-            : "text-[#5C4E42] hover:text-[#2E2620]"
+            ? "bg-[#1F1A16] text-white shadow-sm font-bold"
+            : "text-[#54483E] hover:text-[#1F1A16] hover:bg-white/40"
         }`}
         aria-pressed={locale === "en"}
         lang="en"

@@ -60,19 +60,19 @@ export function ShopClient({ initialBooks }: ShopClientProps) {
   return (
     <div className="space-y-6">
       {/* Filter and Sort Toolbar */}
-      <div className="p-4 rounded-xl bg-white border border-[#DED0BC] flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-2xs">
+      <div className="p-4 sm:p-5 rounded-2xl bg-white/90 backdrop-blur-md border border-[#DED0BC]/80 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm">
         {/* Language Quick Tabs */}
         <div className="flex items-center gap-2">
-          <span className="text-xs font-bold text-[#8C7B6E] uppercase tracking-wider mr-1">
+          <span className="text-xs font-bold text-[#7D6F63] uppercase tracking-wider mr-1">
             {filtersT("language")}:
           </span>
           <button
             type="button"
             onClick={() => setSelectedLanguage("all")}
-            className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer active:scale-95 transition-all duration-150 ${
               selectedLanguage === "all"
-                ? "bg-[#2E2620] text-white shadow-xs"
-                : "bg-[#F8F4EC] text-[#5C4E42] hover:bg-[#F0E8D8]"
+                ? "bg-[#1F1A16] text-white shadow-xs"
+                : "bg-[#F8F4EC] text-[#54483E] hover:bg-[#EFE7D8]"
             }`}
           >
             {locale === "mr" ? "सर्व भाषा" : "All Languages"}
@@ -80,10 +80,10 @@ export function ShopClient({ initialBooks }: ShopClientProps) {
           <button
             type="button"
             onClick={() => setSelectedLanguage("marathi")}
-            className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer active:scale-95 transition-all duration-150 ${
               selectedLanguage === "marathi"
-                ? "bg-[#E8850A] text-white shadow-xs"
-                : "bg-[#F8F4EC] text-[#5C4E42] hover:bg-[#F0E8D8]"
+                ? "bg-[#E8850A] text-white shadow-xs font-devanagari font-bold"
+                : "bg-[#F8F4EC] text-[#54483E] hover:bg-[#EFE7D8]"
             }`}
           >
             मराठी
@@ -91,10 +91,10 @@ export function ShopClient({ initialBooks }: ShopClientProps) {
           <button
             type="button"
             onClick={() => setSelectedLanguage("english")}
-            className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer active:scale-95 transition-all duration-150 ${
               selectedLanguage === "english"
-                ? "bg-[#2E2620] text-white shadow-xs"
-                : "bg-[#F8F4EC] text-[#5C4E42] hover:bg-[#F0E8D8]"
+                ? "bg-[#1F1A16] text-white shadow-xs font-bold"
+                : "bg-[#F8F4EC] text-[#54483E] hover:bg-[#EFE7D8]"
             }`}
           >
             English
@@ -103,15 +103,15 @@ export function ShopClient({ initialBooks }: ShopClientProps) {
 
         {/* Sort Select */}
         <div className="flex items-center gap-2 shrink-0">
-          <ArrowUpDown className="w-4 h-4 text-[#8C7B6E]" />
-          <label htmlFor="sort-books" className="text-xs font-bold text-[#8C7B6E] uppercase tracking-wider">
+          <ArrowUpDown className="w-4 h-4 text-[#7D6F63]" />
+          <label htmlFor="sort-books" className="text-xs font-bold text-[#7D6F63] uppercase tracking-wider">
             {filtersT("sortBy")}:
           </label>
           <select
             id="sort-books"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-            className="text-xs sm:text-sm bg-[#F8F4EC] border border-[#DED0BC] rounded-lg px-2.5 py-1.5 text-[#2E2620] focus:outline-none focus:ring-2 focus:ring-[#E8850A]"
+            className="text-xs sm:text-sm bg-[#FCFBF7] border border-[#DED0BC] rounded-xl px-3 py-1.5 text-[#1F1A16] font-medium focus:outline-none focus:ring-2 focus:ring-[#E8850A] cursor-pointer shadow-2xs"
           >
             <option value="default">{filtersT("sortNewest")}</option>
             <option value="price-low">{filtersT("sortPriceLow")}</option>
@@ -128,10 +128,10 @@ export function ShopClient({ initialBooks }: ShopClientProps) {
             key={cat.id}
             type="button"
             onClick={() => setSelectedCategory(cat.id)}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all border ${
+            className={`px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap cursor-pointer active:scale-95 transition-all duration-150 border ${
               selectedCategory === cat.id
-                ? "bg-[#E8850A] text-white border-[#E8850A]"
-                : "bg-white text-[#5C4E42] border-[#DED0BC] hover:border-[#E8850A]"
+                ? "bg-[#E8850A] text-white border-[#E8850A] shadow-xs"
+                : "bg-white/80 text-[#54483E] border-[#DED0BC] hover:border-[#E8850A] hover:bg-white"
             }`}
           >
             {cat.label}

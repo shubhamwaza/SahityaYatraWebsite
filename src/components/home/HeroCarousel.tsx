@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import { Button } from "@/components/ui/Button";
@@ -113,80 +114,117 @@ export function HeroCarousel() {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-neutral-900 text-white"
+      className="relative w-full overflow-hidden bg-[#1A1512] text-white"
       aria-roledescription="carousel"
       aria-label={t("heroTitle")}
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
     >
-      {/* Background Gradient & Animated Shapes */}
+      {/* Background Gradient & Ambient Warmth */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${activeSlide.theme} transition-all duration-700 ease-in-out`}
+        className={`absolute inset-0 bg-gradient-to-br ${activeSlide.theme} transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]`}
       />
 
-      {/* Saffron & Sprout Accent Glows */}
+      {/* Saffron & Sprout Ambient Glows (Apple Keynote Style) */}
       <div
-        className={`absolute -right-20 -top-20 w-80 sm:w-96 h-80 sm:h-96 rounded-full ${activeSlide.accentGlow} blur-3xl transition-all duration-700 pointer-events-none`}
+        className={`absolute -right-24 -top-24 w-96 sm:w-[500px] h-96 sm:h-[500px] rounded-full ${activeSlide.accentGlow} blur-3xl transition-all duration-700 pointer-events-none`}
         aria-hidden="true"
       />
       <div
-        className="absolute -left-20 -bottom-20 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#E8850A]/10 blur-3xl pointer-events-none"
+        className="absolute -left-20 -bottom-20 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#E8850A]/15 blur-3xl pointer-events-none"
         aria-hidden="true"
       />
 
-      {/* Decorative Book Motif Pattern (subtle) */}
+      {/* Subtle literary dot matrix grid */}
       <div
-        className="absolute inset-0 opacity-5 bg-[radial-gradient(#DED0BC_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
+        className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#FFFFFF_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
         aria-hidden="true"
       />
 
-      <div className="container-site relative z-10 py-16 sm:py-24 lg:py-28 min-h-[460px] sm:min-h-[500px] flex flex-col justify-center">
-        <div className="max-w-3xl space-y-5 sm:space-y-6">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2">
-            <Badge variant="saffron" size="md" className="backdrop-blur-xs">
-              <BadgeIcon className="w-3.5 h-3.5 mr-1" />
-              <span>{activeSlide.badgeText}</span>
-            </Badge>
+      <div className="container-site relative z-10 py-12 sm:py-20 lg:py-24">
+        {/* 2-Column Apple Books Editorial Showcase */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[420px]">
+          {/* Left Column: Narrative & Actions (7 cols) */}
+          <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+            <div className="inline-flex items-center gap-2">
+              <Badge variant="saffron" size="md" className="shadow-xs backdrop-blur-md">
+                <BadgeIcon className="w-3.5 h-3.5 mr-1" />
+                <span>{activeSlide.badgeText}</span>
+              </Badge>
+            </div>
+
+            <h1
+              className={`text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.15] tracking-tight ${
+                locale === "mr" ? "font-devanagari" : "font-latin"
+              }`}
+            >
+              {activeSlide.title}
+            </h1>
+
+            <p className="text-sm sm:text-base lg:text-lg text-[#ECE3D4]/90 max-w-xl leading-relaxed font-normal">
+              {activeSlide.subtitle}
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <Link href={activeSlide.ctaPrimary.href}>
+                <Button variant="primary" size="lg" className="shadow-lg">
+                  <span>{activeSlide.ctaPrimary.label}</span>
+                  <ArrowRight className="w-4 h-4 ml-1.5" />
+                </Button>
+              </Link>
+
+              <Link href={activeSlide.ctaSecondary.href}>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="text-white border-white/30 bg-white/10 hover:bg-white/20 backdrop-blur-xs"
+                >
+                  <span>{activeSlide.ctaSecondary.label}</span>
+                </Button>
+              </Link>
+            </div>
           </div>
 
-          {/* Heading */}
-          <h1
-            className={`text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.2] transition-opacity duration-300 ${
-              locale === "mr" ? "font-devanagari" : "font-latin"
-            }`}
-          >
-            {activeSlide.title}
-          </h1>
+          {/* Right Column: Physical 3D Book Feature (5 cols) */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="relative group">
+              {/* Ambient Book Aura */}
+              <div className="absolute inset-0 bg-[#E8850A]/25 blur-2xl rounded-full scale-90 pointer-events-none" />
 
-          {/* Subtitle */}
-          <p className="text-sm sm:text-base lg:text-lg text-[#DED0BC]/90 max-w-2xl leading-relaxed">
-            {activeSlide.subtitle}
-          </p>
+              {/* Physical 3D Book Showcase */}
+              <div className="book-spine-3d relative w-56 sm:w-64 aspect-[2/3] shadow-[0_20px_50px_rgba(0,0,0,0.6),-8px_0_16px_rgba(0,0,0,0.4)] border border-white/15">
+                <div className="relative w-full h-full">
+                  <Image
+                    src={
+                      currentSlide === 0
+                        ? "/images/books/vyakti-ani-valli.svg"
+                        : currentSlide === 1
+                        ? "/images/books/mrutyunjay.svg"
+                        : "/images/books/panipat.svg"
+                    }
+                    alt="Featured Book Cover"
+                    fill
+                    priority
+                    sizes="(max-width: 640px) 224px, 256px"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center gap-3 pt-3">
-            <Link href={activeSlide.ctaPrimary.href}>
-              <Button variant="primary" size="lg" className="shadow-lg">
-                <span>{activeSlide.ctaPrimary.label}</span>
-                <ArrowRight className="w-4 h-4 ml-1" />
-              </Button>
-            </Link>
-
-            <Link href={activeSlide.ctaSecondary.href}>
-              <Button
-                variant="outline"
-                size="lg"
-                className="text-white border-white/30 hover:bg-white/10"
-              >
-                <span>{activeSlide.ctaSecondary.label}</span>
-              </Button>
-            </Link>
+              {/* Floating Curator Pill */}
+              <div className="absolute -bottom-3 -right-3 sm:-right-4 bg-white/95 backdrop-blur-md border border-[#DED0BC] px-3.5 py-1.5 rounded-full shadow-lg text-[11px] font-bold text-[#1F1A16] flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#236B2B]" />
+                <span>
+                  {locale === "mr" ? "संपादकीय शिफारस" : "Editorial Choice"}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Carousel Bottom Controls */}
-        <div className="flex items-center justify-between pt-10 sm:pt-14 border-t border-white/10 mt-8">
+        <div className="flex items-center justify-between pt-8 sm:pt-12 border-t border-white/15 mt-8">
           {/* Indicators */}
           <div className="flex items-center gap-2">
             {slides.map((slide, idx) => (
@@ -194,10 +232,10 @@ export function HeroCarousel() {
                 key={slide.id}
                 type="button"
                 onClick={() => setCurrentSlide(idx)}
-                className={`transition-all duration-200 rounded-full h-2.5 ${
+                className={`transition-all duration-200 rounded-full h-2 cursor-pointer ${
                   currentSlide === idx
                     ? "w-8 bg-[#E8850A]"
-                    : "w-2.5 bg-white/30 hover:bg-white/50"
+                    : "w-2 bg-white/30 hover:bg-white/50"
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
                 aria-current={currentSlide === idx ? "true" : "false"}
@@ -210,7 +248,7 @@ export function HeroCarousel() {
             <button
               type="button"
               onClick={() => setIsPlaying((p) => !p)}
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 active:scale-90 text-white transition-all cursor-pointer"
               aria-label={isPlaying ? "Pause auto-rotation" : "Play auto-rotation"}
             >
               {isPlaying ? (
@@ -223,7 +261,7 @@ export function HeroCarousel() {
             <button
               type="button"
               onClick={prevSlide}
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 active:scale-90 text-white transition-all cursor-pointer"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -232,7 +270,7 @@ export function HeroCarousel() {
             <button
               type="button"
               onClick={nextSlide}
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 active:scale-90 text-white transition-all cursor-pointer"
               aria-label="Next slide"
             >
               <ChevronRight className="w-4 h-4" />

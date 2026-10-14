@@ -21,23 +21,26 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      "inline-flex items-center justify-center font-medium rounded-full transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed select-none";
+      "inline-flex items-center justify-center font-semibold rounded-full select-none cursor-pointer will-change-transform " +
+      "transition-[transform,background-color,border-color,box-shadow,opacity] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] " +
+      "active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 " +
+      "disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100 disabled:pointer-events-none";
 
     const variantStyles = {
       primary:
-        "bg-[#E8850A] text-white hover:bg-[#C06B00] active:bg-[#A35900] focus-visible:ring-[#E8850A] shadow-sm",
+        "bg-[#E8850A] text-white hover:bg-[#D47500] active:bg-[#B86200] focus-visible:ring-[#E8850A] shadow-[0_2px_8px_-1px_rgba(232,133,10,0.36)] hover:shadow-[0_4px_14px_-2px_rgba(232,133,10,0.45)]",
       secondary:
-        "bg-[#2E2620] text-white hover:bg-[#453A32] active:bg-[#1E1915] focus-visible:ring-[#2E2620]",
+        "bg-[#1F1A16] text-white hover:bg-[#382F27] active:bg-[#120F0D] focus-visible:ring-[#1F1A16] shadow-sm hover:shadow-md",
       outline:
-        "border border-[#DED0BC] bg-transparent text-[#2E2620] hover:bg-[#F0E8D8] active:bg-[#E8DCB8] focus-visible:ring-[#E8850A]",
+        "border border-[#DED0BC] bg-white/70 backdrop-blur-sm text-[#1F1A16] hover:bg-[#F8F4EC] hover:border-[#CDBDA6] active:bg-[#EFE7D8] focus-visible:ring-[#E8850A] shadow-xs",
       ghost:
-        "bg-transparent text-[#2E2620] hover:bg-[#F0E8D8] active:bg-[#E8DCB8] focus-visible:ring-[#E8850A]",
+        "bg-transparent text-[#1F1A16] hover:bg-[#F0E8D8]/70 active:bg-[#E8DCB8] focus-visible:ring-[#E8850A]",
     };
 
     const sizeStyles = {
-      sm: "text-xs px-3 py-1.5 gap-1.5",
-      md: "text-sm px-4 py-2 gap-2",
-      lg: "text-base px-6 py-3 gap-2.5",
+      sm: "text-xs px-3.5 py-1.5 gap-1.5 tracking-tight",
+      md: "text-sm px-5 py-2.5 gap-2 tracking-tight",
+      lg: "text-base px-7 py-3.5 gap-2.5 tracking-tight font-bold",
     };
 
     return (

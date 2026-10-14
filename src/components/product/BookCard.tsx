@@ -31,48 +31,50 @@ export function BookCard({ book, priority = false }: BookCardProps) {
       : null;
 
   return (
-    <div className="group relative flex flex-col bg-white rounded-xl border border-[#DED0BC] overflow-hidden hover:border-[#E8850A] hover:shadow-md transition-all duration-200">
-      {/* Clickable Image Container */}
+    <div className="group relative flex flex-col bg-white rounded-2xl border border-[#DED0BC]/70 hover:border-[#E8850A]/60 shadow-[0_2px_8px_-1px_rgba(31,26,22,0.05)] hover:shadow-[0_12px_24px_-4px_rgba(31,26,22,0.12)] transition-all duration-240 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden">
+      {/* Clickable Book Cover Presentation (Physical Book Depth) */}
       <Link
         href={`/products/${book.handle}`}
-        className="relative block aspect-[2/3] w-full overflow-hidden bg-[#F0E8D8]/50"
+        className="relative block p-3 sm:p-4 bg-gradient-to-b from-[#FBF8F2] to-[#F5EFEB]/60 cursor-pointer overflow-hidden"
       >
-        <Image
-          src={book.coverImage}
-          alt={book.coverImageAlt}
-          fill
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          priority={priority}
-          className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
-        />
+        <div className="book-spine-3d relative aspect-[2/3] w-full bg-[#EFE7D8]/80 shadow-md">
+          <Image
+            src={book.coverImage}
+            alt={book.coverImageAlt}
+            fill
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            priority={priority}
+            className="object-cover"
+          />
 
-        {/* Language Badge */}
-        <div className="absolute top-2.5 left-2.5">
+          {/* Top-Right Discount Badge */}
+          {discountPercent && (
+            <div className="absolute top-2 right-2 z-20">
+              <span className="bg-[#C62828] text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs tracking-tight">
+                {discountPercent}% OFF
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* Bottom Language Badge (Overlay) */}
+        <div className="absolute bottom-4 left-4 z-20">
           <Badge
             variant={book.language === "marathi" ? "saffron" : "default"}
             size="sm"
-            className="shadow-2xs font-semibold backdrop-blur-xs"
+            className="shadow-xs backdrop-blur-md"
           >
             {book.language === "marathi" ? "मराठी" : "English"}
           </Badge>
         </div>
-
-        {/* Discount Badge (only if verified discount) */}
-        {discountPercent && (
-          <div className="absolute top-2.5 right-2.5">
-            <span className="bg-[#C62828] text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-2xs">
-              {discountPercent}% OFF
-            </span>
-          </div>
-        )}
       </Link>
 
-      {/* Book Information */}
-      <div className="flex flex-col flex-1 p-3.5 sm:p-4 space-y-2">
+      {/* Book Metadata & Actions */}
+      <div className="flex flex-col flex-1 p-3.5 sm:p-4 space-y-1.5">
         {/* Title */}
-        <Link href={`/products/${book.handle}`} className="block">
+        <Link href={`/products/${book.handle}`} className="block group/title">
           <h3
-            className={`font-bold text-[#2E2620] group-hover:text-[#E8850A] transition-colors line-clamp-2 leading-snug ${
+            className={`font-bold text-[#1F1A16] group-hover/title:text-[#E8850A] transition-colors duration-150 line-clamp-2 leading-snug tracking-tight ${
               book.language === "marathi"
                 ? "font-devanagari text-base sm:text-lg"
                 : "font-latin text-sm sm:text-base"
@@ -83,35 +85,35 @@ export function BookCard({ book, priority = false }: BookCardProps) {
         </Link>
 
         {/* Author */}
-        <p className="text-xs sm:text-sm text-[#5C4E42] line-clamp-1 font-medium">
+        <p className="text-xs text-[#7D6F63] line-clamp-1 font-medium">
           {book.author}
         </p>
 
-        {/* Spacer */}
-        <div className="flex-1" />
+        {/* Flexible Spacer */}
+        <div className="flex-1 min-h-[0.5rem]" />
 
         {/* Price & Action Row */}
-        <div className="pt-2 border-t border-[#DED0BC]/40 flex items-center justify-between gap-2">
+        <div className="pt-2.5 border-t border-[#DED0BC]/50 flex items-center justify-between gap-2">
           <div className="flex items-baseline gap-1.5 flex-wrap">
-            <span className="text-base sm:text-lg font-bold text-[#2E2620]">
+            <span className="text-base sm:text-lg font-extrabold text-[#1F1A16] tracking-tight">
               ₹{book.price}
             </span>
             {book.compareAtPrice && book.compareAtPrice > book.price && (
-              <span className="text-xs text-[#8C7B6E] line-through">
+              <span className="text-xs text-[#7D6F63] line-through">
                 ₹{book.compareAtPrice}
               </span>
             )}
           </div>
 
-          {/* Quick Add Button */}
+          {/* Quick Add Button with Emil Kowalski press scale */}
           <button
             type="button"
             onClick={handleQuickAdd}
             disabled={!book.availableForSale}
-            className={`p-2 rounded-full transition-all duration-150 focus-visible:ring-2 focus-visible:ring-[#E8850A] ${
+            className={`p-2 rounded-full cursor-pointer transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-90 focus-visible:ring-2 focus-visible:ring-[#E8850A] ${
               added
-                ? "bg-[#2E7D32] text-white"
-                : "bg-[#F8F4EC] text-[#2E2620] hover:bg-[#E8850A] hover:text-white"
+                ? "bg-[#236B2B] text-white shadow-xs"
+                : "bg-[#F8F4EC] text-[#1F1A16] hover:bg-[#E8850A] hover:text-white shadow-2xs"
             }`}
             title={added ? cartT("itemAdded") : t("addToCart")}
             aria-label={`${t("addToCart")} - ${book.title}`}

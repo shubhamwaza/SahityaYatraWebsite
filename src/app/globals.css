@@ -12,99 +12,67 @@
 @theme {
   /* ── Colour palette ── */
 
-  /* Paper & surfaces */
+  /* Paper & surfaces — Apple-grade warm literary palette */
   --color-paper:          #F8F4EC;
-  --color-paper-dark:     #F0E8D8;
+  --color-paper-light:    #FCFBF7;
+  --color-paper-dark:     #EFE7D8;
   --color-white:          #FFFFFF;
 
-  /* Ink (text) */
-  --color-ink:            #2E2620;
-  --color-ink-secondary:  #5C4E42;
-  --color-ink-muted:      #8C7B6E;
+  /* Ink (text) — high contrast, rich legibility */
+  --color-ink:            #1F1A16;
+  --color-ink-secondary:  #54483E;
+  --color-ink-muted:      #7D6F63;
 
-  /* Brand accent — derived from logo gradient */
-  /* Logo runs: saffron-orange (#F5A020) → warm red (#D93020) */
+  /* Brand accent — saffron-orange from logo gradient */
   --color-saffron:        #E8850A;
   --color-saffron-light:  #F5A020;
   --color-saffron-dark:   #C06B00;
+  --color-saffron-subtle: #FFF4E5;
 
   /* Green accent — logo sprout */
-  --color-sprout:         #2E7D32;
-  --color-sprout-light:   #43A047;
+  --color-sprout:         #236B2B;
+  --color-sprout-light:   #34853D;
+  --color-sprout-subtle:  #EBF5ED;
 
   /* Borders & separators */
   --color-border:         #DED0BC;
-  --color-border-subtle:  #EDE4D4;
+  --color-border-subtle:  #ECE3D4;
 
   /* Semantic colours */
-  --color-success:        #2E7D32;
-  --color-success-bg:     #E8F5E9;
+  --color-success:        #236B2B;
+  --color-success-bg:     #EBF5ED;
   --color-error:          #C62828;
   --color-error-bg:       #FFEBEE;
   --color-warning:        #E65100;
   --color-warning-bg:     #FFF3E0;
 
-  /* ── Typography ── */
+  /* ── Typography (Optical Sizing) ── */
+  --font-devanagari: var(--font-mukta), "Mukta", system-ui, -apple-system, sans-serif;
+  --font-latin: var(--font-ibm-plex-sans), "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", monospace;
 
-  /* Devanagari: Mukta */
-  --font-devanagari: "Mukta", system-ui, sans-serif;
+  /* ── Apple & Emil Kowalski Physics Easing Curves ── */
+  --ease-apple:      cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out:        cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:    cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-spring:     cubic-bezier(0.175, 0.885, 0.32, 1.15);
 
-  /* Latin: IBM Plex Sans */
-  --font-latin: "IBM Plex Sans", system-ui, sans-serif;
+  /* ── Durations ── */
+  --duration-instant: 100ms;
+  --duration-fast:    160ms;
+  --duration-normal:  240ms;
+  --duration-slow:    360ms;
 
-  /* Monospace (for ISBNs, codes) */
-  --font-mono: "IBM Plex Mono", "Courier New", monospace;
-
-  /* ── Type scale ── */
-  --text-display:   clamp(2rem, 5vw, 3.5rem);
-  --text-h1:        clamp(1.75rem, 3.5vw, 2.5rem);
-  --text-h2:        clamp(1.375rem, 2.5vw, 1.875rem);
-  --text-h3:        clamp(1.125rem, 2vw, 1.375rem);
-  --text-body:      1rem;
-  --text-small:     0.875rem;
-  --text-caption:   0.75rem;
-  --text-price:     1.25rem;
-
-  /* ── Spacing scale ── */
-  --spacing-px:     1px;
-  --spacing-0:      0;
-  --spacing-1:      0.25rem;
-  --spacing-2:      0.5rem;
-  --spacing-3:      0.75rem;
-  --spacing-4:      1rem;
-  --spacing-5:      1.25rem;
-  --spacing-6:      1.5rem;
-  --spacing-8:      2rem;
-  --spacing-10:     2.5rem;
-  --spacing-12:     3rem;
-  --spacing-16:     4rem;
-  --spacing-20:     5rem;
-  --spacing-24:     6rem;
-
-  /* ── Border radius ── */
-  --radius-sm:      0.25rem;
-  --radius-md:      0.5rem;
-  --radius-lg:      0.75rem;
-  --radius-xl:      1rem;
-  --radius-full:    9999px;
-
-  /* ── Shadows ── */
-  --shadow-card:    0 1px 3px 0 rgb(46 38 32 / 0.08),
-                    0 1px 2px -1px rgb(46 38 32 / 0.06);
-  --shadow-raised:  0 4px 12px 0 rgb(46 38 32 / 0.10),
-                    0 2px 4px -1px rgb(46 38 32 / 0.06);
-  --shadow-overlay: 0 20px 48px -8px rgb(46 38 32 / 0.24);
+  /* ── Apple-grade Shadows & Depth ── */
+  --shadow-sm:      0 1px 2px 0 rgba(31, 26, 22, 0.05);
+  --shadow-card:    0 2px 8px -1px rgba(31, 26, 22, 0.06), 0 1px 3px -1px rgba(31, 26, 22, 0.04);
+  --shadow-book:    0 4px 6px -1px rgba(31, 26, 22, 0.08), 0 12px 28px -4px rgba(31, 26, 22, 0.16), -3px 0 8px -2px rgba(0, 0, 0, 0.18);
+  --shadow-book-hover: 0 12px 24px -2px rgba(31, 26, 22, 0.12), 0 24px 48px -8px rgba(31, 26, 22, 0.22), -4px 0 12px -2px rgba(0, 0, 0, 0.24);
+  --shadow-floating: 0 16px 36px -4px rgba(31, 26, 22, 0.14), 0 6px 12px -2px rgba(31, 26, 22, 0.06);
 
   /* ── Layout ── */
   --container-max:  1280px;
   --container-wide: 1440px;
-  --container-text: 720px;
-
-  /* ── Transitions ── */
-  --duration-fast:   120ms;
-  --duration-normal: 200ms;
-  --duration-slow:   350ms;
-  --ease-out:        cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ─────────────────────────────────────────────
@@ -185,19 +153,103 @@ body {
   width: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: 1rem;
+  padding-inline: 1.25rem;
 }
 
 @media (min-width: 640px) {
   .container-site {
-    padding-inline: 1.5rem;
+    padding-inline: 2rem;
   }
 }
 
 @media (min-width: 1024px) {
   .container-site {
-    padding-inline: 2rem;
+    padding-inline: 2.5rem;
   }
+}
+
+/* ─────────────────────────────────────────────
+   Apple & Emil Kowalski Design Engineering Utilities
+   ───────────────────────────────────────────── */
+
+/* Apple-grade Translucent Glassmorphic Surfaces */
+.glass-nav {
+  background-color: rgba(248, 244, 236, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(222, 208, 188, 0.55);
+}
+
+.glass-card {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(222, 208, 188, 0.6);
+  box-shadow: var(--shadow-card);
+}
+
+/* Emil Kowalski: Tactile Press Feedback (Scale 0.97 on press) */
+.pressable {
+  transition: transform var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease,
+              opacity var(--duration-fast) ease;
+  will-change: transform;
+}
+
+.pressable:active {
+  transform: scale(0.97);
+}
+
+/* Apple Books 3D Physical Spine & Shadow Presentation */
+.book-spine-3d {
+  position: relative;
+  border-radius: 6px 12px 12px 6px;
+  overflow: hidden;
+  box-shadow: var(--shadow-book);
+  transition: transform var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
+  will-change: transform, box-shadow;
+}
+
+/* Physical spine crease highlight & shadow */
+.book-spine-3d::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 14px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.28) 0%,
+    rgba(0, 0, 0, 0.12) 35%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(0, 0, 0, 0.04) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .book-spine-3d:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: var(--shadow-book-hover);
+  }
+}
+
+/* Apple Optical Display Typography (Negative Tracking, Tight Leading) */
+.optical-display {
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.optical-title {
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  font-weight: 700;
 }
 
 /* ─────────────────────────────────────────────

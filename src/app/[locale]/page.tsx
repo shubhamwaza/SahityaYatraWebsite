@@ -50,27 +50,27 @@ export default function HomePage() {
   const englishHighlights = getEnglishBooks().slice(0, 4);
 
   return (
-    <div className="space-y-12 sm:space-y-16 pb-20">
-      {/* 1. Campaign Hero Carousel */}
+    <div className="space-y-16 sm:space-y-24 pb-24">
+      {/* 1. Campaign Hero Showcase */}
       <HeroCarousel />
 
-      {/* 2. Category Quick-Browse Strip */}
+      {/* 2. Category Quick-Browse Strip (Apple Segmented Pills) */}
       <CategoryStrip />
 
       {/* 3. Section: New Arrivals (नवीन आगमन | New Arrivals) */}
       <section className="container-site">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 pb-3 border-b border-[#DED0BC]">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-[#DED0BC]/70">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
               <Badge variant="saffron" size="sm">
                 <Sparkles className="w-3 h-3 mr-1" />
                 {locale === "mr" ? "ताजी पुस्तके" : "Fresh Collection"}
               </Badge>
             </div>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#2E2620]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1F1A16] optical-title">
               {t("newArrivalsMarathi")}
             </h2>
-            <p className="text-xs sm:text-sm text-[#5C4E42] mt-1">
+            <p className="text-xs sm:text-sm text-[#7D6F63]">
               {locale === "mr"
                 ? "आमच्या संग्रहातील नव्याने दाखल झालेली निवडक पुस्तके"
                 : "Handpicked newly catalogued titles across genres"}
@@ -79,15 +79,15 @@ export default function HomePage() {
 
           <Link
             href="/shop"
-            className="mt-3 sm:mt-0 inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#E8850A] hover:text-[#C06B00] group"
+            className="mt-4 sm:mt-0 inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#E8850A] hover:text-[#C06B00] group cursor-pointer"
           >
             <span>{t("viewAll")}</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="w-4 h-4 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-1" />
           </Link>
         </div>
 
-        {/* 4-Column Product Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        {/* 4-Column Product Grid with Optical Balance */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {newArrivals.map((book) => (
             <BookCard key={book.id} book={book} />
           ))}
@@ -96,18 +96,18 @@ export default function HomePage() {
 
       {/* 4. Section: SahityaYatra Recommendations (आमच्या शिफारसी | Our Recommendations) */}
       <section className="container-site">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 pb-3 border-b border-[#DED0BC]">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-[#DED0BC]/70">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
               <Badge variant="sprout" size="sm">
                 <BookOpen className="w-3 h-3 mr-1" />
                 {locale === "mr" ? "संपादकीय निवड" : "Curator's Choice"}
               </Badge>
             </div>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#2E2620]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1F1A16] optical-title">
               {t("ourRecommendationsMarathi")}
             </h2>
-            <p className="text-xs sm:text-sm text-[#5C4E42] mt-1">
+            <p className="text-xs sm:text-sm text-[#7D6F63]">
               {locale === "mr"
                 ? "वाचकांनी अवश्य वाचावीत अशी चिरंतन व मोलाची पुस्तके"
                 : "Essential reading recommended by our seasoned bibliophiles"}
@@ -116,42 +116,42 @@ export default function HomePage() {
 
           <Link
             href="/collections/marathi-books"
-            className="mt-3 sm:mt-0 inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#E8850A] hover:text-[#C06B00] group"
+            className="mt-4 sm:mt-0 inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#E8850A] hover:text-[#C06B00] group cursor-pointer"
           >
             <span>{t("viewAll")}</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="w-4 h-4 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-1" />
           </Link>
         </div>
 
         {/* 4-Column Product Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {recommendations.map((book) => (
             <BookCard key={book.id} book={book} />
           ))}
         </div>
       </section>
 
-      {/* 5. Feature Banner: Marathi Literature Spotlight */}
+      {/* 5. Feature Banner: Marathi Literature Spotlight (Apple Editorial Story Card) */}
       <section className="container-site">
-        <div className="rounded-2xl bg-gradient-to-r from-[#8A3324] via-[#702418] to-[#45140D] text-white p-6 sm:p-10 lg:p-12 relative overflow-hidden shadow-sm">
+        <div className="rounded-3xl bg-gradient-to-br from-[#2D1A16] via-[#3D221C] to-[#1C0F0C] text-white p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-2xl border border-white/10">
           {/* Subtle background glow */}
           <div
-            className="absolute right-0 top-0 w-80 h-80 rounded-full bg-[#E5A93C]/15 blur-3xl pointer-events-none"
+            className="absolute right-0 top-0 w-96 h-96 rounded-full bg-[#E8850A]/20 blur-3xl pointer-events-none"
             aria-hidden="true"
           />
 
           <div className="max-w-2xl space-y-4 relative z-10">
-            <span className="text-xs font-bold text-[#E5A93C] uppercase tracking-wider">
-              {locale === "mr" ? "मराठी साहित्याचे दालन" : "Marathi Literature Focus"}
+            <span className="text-xs font-bold text-[#F5A020] uppercase tracking-widest">
+              {locale === "mr" ? "मराठी साहित्याचे दालन" : "Marathi Literature Spotlight"}
             </span>
 
-            <h2 className="text-2xl sm:text-4xl font-bold leading-tight font-devanagari">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight font-devanagari">
               {locale === "mr"
                 ? "समृद्ध मराठी ग्रंथ संपदा, आता तुमच्या घरी"
                 : "Treasured Marathi Classics & Modern Masterpieces"}
             </h2>
 
-            <p className="text-xs sm:text-sm text-[#DED0BC] leading-relaxed">
+            <p className="text-xs sm:text-base text-[#ECE3D4]/90 leading-relaxed font-normal">
               {locale === "mr"
                 ? "संत साहित्य, ऐतिहासिक महाकादंबऱ्या, विनोदी साहित्य, ललित निबंध आणि सामाजिक विचार मांडणारी सर्वोत्कृष्ट पुस्तके."
                 : "From timeless historical sagas to contemporary memoirs, explore the finest expressions of Marathi culture."}
@@ -162,17 +162,17 @@ export default function HomePage() {
                 <Button
                   variant="primary"
                   size="md"
-                  className="bg-[#E5A93C] text-[#2E2620] hover:bg-[#F28C38] font-bold"
+                  className="bg-[#E8850A] text-white hover:bg-[#D47500] font-bold shadow-lg"
                 >
                   <span>{locale === "mr" ? "मराठी पुस्तके पाहा" : "Explore Marathi Books"}</span>
-                  <ArrowRight className="w-4 h-4 ml-1" />
+                  <ArrowRight className="w-4 h-4 ml-1.5" />
                 </Button>
               </Link>
             </div>
           </div>
 
           {/* Book Cards Grid inside Spotlight */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8 pt-8 border-t border-white/15">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-10 pt-10 border-t border-white/15">
             {marathiHighlights.map((book) => (
               <BookCard key={book.id} book={book} />
             ))}
@@ -182,14 +182,14 @@ export default function HomePage() {
 
       {/* 6. Section: English Literature Highlights */}
       <section className="container-site">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 pb-3 border-b border-[#DED0BC]">
-          <div>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#2E2620]">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-[#DED0BC]/70">
+          <div className="space-y-1">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1F1A16] optical-title">
               {locale === "mr"
                 ? "इंग्रजी पुस्तके | English Literature"
                 : "English Literature & Indian Authors"}
             </h2>
-            <p className="text-xs sm:text-sm text-[#5C4E42] mt-1">
+            <p className="text-xs sm:text-sm text-[#7D6F63]">
               {locale === "mr"
                 ? "भारतीय व जागतिक इंग्रजी साहित्यातील प्रसिद्ध पुस्तके"
                 : "Classic fiction, memoirs, and celebrated Indian writings in English"}
@@ -198,14 +198,14 @@ export default function HomePage() {
 
           <Link
             href="/collections/english-books"
-            className="mt-3 sm:mt-0 inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#E8850A] hover:text-[#C06B00] group"
+            className="mt-4 sm:mt-0 inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#E8850A] hover:text-[#C06B00] group cursor-pointer"
           >
             <span>{t("viewAll")}</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="w-4 h-4 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-1" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {englishHighlights.map((book) => (
             <BookCard key={book.id} book={book} />
           ))}
@@ -214,7 +214,7 @@ export default function HomePage() {
 
       {/* 7. Exhibition Heritage & Brand Trust Narrative */}
       <section className="container-site">
-        <div className="rounded-2xl bg-white border border-[#DED0BC] p-6 sm:p-10 lg:p-12 shadow-2xs">
+        <div className="rounded-3xl bg-white border border-[#DED0BC]/80 p-8 sm:p-12 lg:p-16 shadow-[0_4px_20px_-2px_rgba(31,26,22,0.06)]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Story */}
             <div className="space-y-4">

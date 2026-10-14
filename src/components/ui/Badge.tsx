@@ -13,18 +13,18 @@ export function Badge({
   ...props
 }: BadgeProps) {
   const baseStyles =
-    "inline-flex items-center font-medium rounded-full select-none";
+    "inline-flex items-center font-semibold rounded-full select-none tracking-tight transition-colors duration-150";
 
   const variantStyles = {
-    default: "bg-[#F0E8D8] text-[#5C4E42]",
-    saffron: "bg-[#FFF3E0] text-[#C06B00] border border-[#F5A020]/30",
-    sprout: "bg-[#E8F5E9] text-[#2E7D32] border border-[#43A047]/30",
-    outline: "border border-[#DED0BC] text-[#5C4E42] bg-white",
+    default: "bg-[#EFE7D8]/80 text-[#54483E] border border-[#DED0BC]/60",
+    saffron: "bg-[#FFF4E5] text-[#C06B00] border border-[#E8850A]/25 shadow-[0_1px_3px_rgba(232,133,10,0.12)]",
+    sprout: "bg-[#EBF5ED] text-[#236B2B] border border-[#236B2B]/20 shadow-[0_1px_3px_rgba(35,107,43,0.1)]",
+    outline: "border border-[#DED0BC] text-[#54483E] bg-white/80 backdrop-blur-xs",
   };
 
   const sizeStyles = {
-    sm: "text-xs px-2 py-0.5",
-    md: "text-xs px-2.5 py-1",
+    sm: "text-[11px] px-2.5 py-0.5 gap-1",
+    md: "text-xs px-3 py-1 gap-1.5",
   };
 
   return (
