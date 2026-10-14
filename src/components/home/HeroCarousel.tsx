@@ -188,12 +188,12 @@ export function HeroCarousel() {
 
           {/* Right Column: Physical 3D Book Feature (5 cols) */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative group">
+            <div className="relative group book-stage">
               {/* Ambient Book Aura */}
-              <div className="absolute inset-0 bg-[#E8850A]/25 blur-2xl rounded-full scale-90 pointer-events-none" />
+              <div className="book-ambient-glow !opacity-70 scale-110 !inset-0" />
 
               {/* Physical 3D Book Showcase */}
-              <div className="book-spine-3d relative w-56 sm:w-64 aspect-[2/3] shadow-[0_20px_50px_rgba(0,0,0,0.6),-8px_0_16px_rgba(0,0,0,0.4)] border border-white/15">
+              <div className="book-spine-3d relative w-56 sm:w-64 aspect-[2/3] shadow-[0_24px_60px_rgba(0,0,0,0.65),-8px_0_16px_rgba(0,0,0,0.4)] border border-white/20">
                 <div className="relative w-full h-full">
                   <Image
                     src={
@@ -209,12 +209,14 @@ export function HeroCarousel() {
                     sizes="(max-width: 640px) 224px, 256px"
                     className="object-cover"
                   />
+                  {/* Emil Kowalski Specular Light Sheen */}
+                  <div className="book-sheen" />
                 </div>
               </div>
 
-              {/* Floating Curator Pill */}
-              <div className="absolute -bottom-3 -right-3 sm:-right-4 bg-white/95 backdrop-blur-md border border-[#DED0BC] px-3.5 py-1.5 rounded-full shadow-lg text-[11px] font-bold text-[#1F1A16] flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#236B2B]" />
+              {/* Floating Curator Pill with Pulsing Sprout Dot */}
+              <div className="absolute -bottom-3 -right-3 sm:-right-4 bg-white/95 backdrop-blur-md border border-[#DED0BC] px-3.5 py-1.5 rounded-full shadow-lg text-[11px] font-bold text-[#1F1A16] flex items-center gap-1.5 z-20">
+                <span className="w-2 h-2 rounded-full bg-[#236B2B] animate-pulse" />
                 <span>
                   {locale === "mr" ? "संपादकीय शिफारस" : "Editorial Choice"}
                 </span>

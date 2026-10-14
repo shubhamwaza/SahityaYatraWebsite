@@ -100,23 +100,32 @@ export function ProductDetailClient({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         {/* Left Column: Book Cover Presentation (5 cols) */}
         <div className="lg:col-span-5 flex flex-col items-center">
-          <div className="w-full max-w-sm p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-[#FCFBF7] to-[#F5EFEB] border border-[#DED0BC]/80 shadow-[0_4px_20px_-2px_rgba(31,26,22,0.06)] flex justify-center">
-            <div className="book-spine-3d relative w-full aspect-[2/3] shadow-[0_16px_36px_-4px_rgba(31,26,22,0.22),-6px_0_12px_rgba(0,0,0,0.18)]">
-              <Image
-                src={book.coverImage}
-                alt={book.coverImageAlt}
-                fill
-                priority
-                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 40vw, 30vw"
-                className="object-cover"
-              />
-              {discountPercent && (
-                <div className="absolute top-3 right-3 z-20">
-                  <span className="bg-[#C62828] text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md tracking-tight">
-                    {discountPercent}% OFF
-                  </span>
-                </div>
-              )}
+          <div className="w-full max-w-sm p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-[#FCFBF7] to-[#F5EFEB] border border-[#DED0BC]/80 shadow-[0_4px_20px_-2px_rgba(31,26,22,0.06)] flex justify-center group">
+            <div className="book-stage w-full relative flex justify-center items-center">
+              {/* Dynamic Ambient Glow */}
+              <div className="book-ambient-glow" />
+
+              <div className="book-spine-3d relative w-full aspect-[2/3] shadow-[0_16px_36px_-4px_rgba(31,26,22,0.22),-6px_0_12px_rgba(0,0,0,0.18)]">
+                <Image
+                  src={book.coverImage}
+                  alt={book.coverImageAlt}
+                  fill
+                  priority
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 40vw, 30vw"
+                  className="object-cover"
+                />
+
+                {/* Emil Kowalski Specular Light Sheen */}
+                <div className="book-sheen" />
+
+                {discountPercent && (
+                  <div className="absolute top-3 right-3 z-20">
+                    <span className="bg-[#C62828] text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md tracking-tight">
+                      {discountPercent}% OFF
+                    </span>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
