@@ -203,7 +203,14 @@ SahityaYatraWebsite/
 │   │   │   ├── BookCard.tsx            ← 3D book spine + specular sheen + quick-add morph
 │   │   │   └── ProductDetailClient.tsx ← Sticky purchase bar + gallery + 3D book stage
 │   │   ├── home/
-│   │   │   ├── HeroCarousel.tsx        ← Editorial showcase with dynamic aura halos & accolades
+│   │   │   ├── HeroCarousel.tsx        ← Editorial Marquee orchestrating the 4 category templates
+│   │   │   ├── hero/
+│   │   │   │   ├── heroTypes.ts        ← Types for Exhibition, Book, Festival, Dispatch
+│   │   │   │   ├── heroData.ts         ← Rich bilingual content for the 4 categories
+│   │   │   │   ├── ExhibitionSlide.tsx ← Template A: Physical Exhibition Tour Ticket
+│   │   │   │   ├── BookSpotlightSlide.tsx ← Template B: Masterpiece Book Spotlight
+│   │   │   │   ├── FestivalSlide.tsx   ← Template C: Cultural Festival / Diwali Ank Season
+│   │   │   │   └── DispatchSlide.tsx   ← Template D: Founder's Archival Dispatch & Rare Books
 │   │   │   ├── CategoryStrip.tsx       ← Segmented category pills
 │   │   │   └── HeritagePavilion.tsx    ← 25-yr brass medallion seal, founder letter, tour footprint
 │   │   ├── shop/
@@ -243,15 +250,21 @@ SahityaYatraWebsite/
 
 ---
 
-## 4-Pillar Frontend Beautification Elevation (Completed)
+## 4-Pillar Frontend Beautification & Modular Hero Marquee (Completed)
 
 1. **#1 Physical 3D Book Experience & Specular Sheen (`commit 645c86b`):**
    - 900px CSS perspective stage, 3D paper fold indentation (`.book-spine-3d`), stacked cream paper edge lines (`repeating-linear-gradient`), diagonal glossy sheen sweep (`.book-sheen`), and dynamic cover aura glow (`.book-ambient-glow`).
    - Tactile quick-add button with morphing green confirmation (`जोडले / Added`).
 2. **#2 Apple-Grade Slide-Over Cart Drawer (`commit 14c682d`):**
    - Backdrop-blur spring slide-out drawer (`--ease-drawer`), animated ₹500 free shipping meter with celebrations, miniature 3D covers in cart rows, tactile quantity steppers (`-` `1` `+`), and Apple checkout CTA.
-3. **#3 Hero Editorial Showcase Overhaul (`commit 430d790`):**
-   - Ambient blurred radial halos matched to each book's dominant palette (`auraColor`), gold foil accolade pills (`साहित्य अकादमी पुरस्कार`), glass literary quote cards, publication year & translator chips, and award seal (`अभिजात ग्रंथ`).
+3. **#3 Modular Multi-Category Editorial Hero Marquee (`commit 6ccefa5`):**
+   - Replaced single-mode book carousel with a **4-Category Editorial Marquee** adhering strictly to **Mukta** (Devanagari) and **IBM Plex Sans** (Latin/numerals):
+     - **Template A (Exhibition Tour Ticket):** Perforated archival ticket stub, dates (`२२ - २४ ऑक्टोबर`), venue, timing, live status, and Google Maps pin.
+     - **Template B (Masterpiece Book Spotlight):** 3D book stage, ambient cover halo, literary pull-quote, and quick-purchase CTA.
+     - **Template C (Cultural Festival / Diwali Ank Season):** Festive envelope with overlapping 3-cover fan stack, all-India pre-Lakshmi Pujan delivery guarantee, and free commemorative bookmark perks.
+     - **Template D (Founder's Archival Dispatch & Rare Book Mission):** Sourcing bureau card, 25-year network out-of-print search protocol, and campus exhibition inquiry.
+   - Zero height shift: all 4 templates fit the identical ergonomic height window (`min-h-[460px] lg:min-h-[500px]`).
+   - Interactive category pill capsules (`[🏛️ पुणे भव्य ग्रंथप्रदर्शन]` `[📖 मृत्युंजय]` `[🪔 दिवाळी अंक संच]` `[✍️ दुर्मीळ ग्रंथ शोध]`).
 4. **#4 The Father's Heritage Exhibition Pavilion (`commit 236c0a2`):**
    - 25-Year Commemorative Brass Medallion Seal (1999–2026 • २५+ वर्षे ग्रंथ निष्ठा).
    - 4 Grand Heritage Stat Pillars (25+ Years, 5,000+ Curated Titles, 100+ Exhibitions, 100% Authentic Editions).
