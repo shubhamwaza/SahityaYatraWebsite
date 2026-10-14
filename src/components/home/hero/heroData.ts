@@ -115,7 +115,7 @@ export const heroSlidesData: HeroSlide[] = [
       mr: "काँटिनेन्टल प्रकाशन • ९६० पृष्ठे • हार्डबाउंड आवृत्ती २०२६",
       en: "Continental Prakashan • 960 Pages • Hardbound Edition",
     },
-    coverImage: "/images/books/mrutyunjay.svg",
+    coverImage: "/images/books/mrutyunjay.jpg",
     coverAlt: "Mrityunjay Book Cover",
     ctaPrimary: {
       label: {
@@ -180,17 +180,17 @@ export const heroSlidesData: HeroSlide[] = [
     },
     covers: [
       {
-        image: "/images/books/vyakti-ani-valli.svg",
+        image: "/images/books/vyakti-ani-valli.jpg",
         alt: "Mauj Diwali Ank",
         title: "मौज",
       },
       {
-        image: "/images/books/batatyachi-chaal.svg",
+        image: "/images/books/batatyachi-chawl.jpg",
         alt: "Awaz Diwali Ank",
         title: "आवाज",
       },
       {
-        image: "/images/books/yayati.svg",
+        image: "/images/books/yayati.jpg",
         alt: "Deepavali Special",
         title: "दीपावली",
       },

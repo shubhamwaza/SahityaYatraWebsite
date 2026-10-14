@@ -168,7 +168,7 @@ export function normalizeShopifyProduct(product: ShopifyProduct): Book {
     language,
     price,
     compareAtPrice: compareAtPrice && compareAtPrice > price ? compareAtPrice : undefined,
-    coverImage: product.featuredImage?.url || "/images/books/batatyachi-chawl.svg",
+    coverImage: product.featuredImage?.url || "/images/books/batatyachi-chawl.jpg",
     coverImageAlt: product.featuredImage?.altText || product.title,
     description: product.description,
     publisher,
