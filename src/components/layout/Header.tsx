@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, useRouter } from "@/lib/i18n/navigation";
@@ -18,6 +18,17 @@ export function Header() {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,9 +50,21 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full glass-nav transition-all duration-200">
+    <header
+      className={`sticky top-0 z-40 w-full transition-all duration-300 ease-out ${
+        isScrolled
+          ? "bg-[#F8F4EC]/95 backdrop-blur-md shadow-xs border-b border-[#DED0BC]/80"
+          : "glass-nav"
+      }`}
+    >
       {/* Top micro-bar: literary ethos & exhibition roots */}
-      <div className="bg-[#1F1A16] text-[#ECE3D4] text-xs py-1 px-4 border-b border-black/10">
+      <div
+        className={`bg-[#1F1A16] text-[#ECE3D4] text-xs px-4 border-b border-black/10 transition-all duration-300 ease-out overflow-hidden ${
+          isScrolled
+            ? "max-h-0 py-0 opacity-0 border-transparent pointer-events-none"
+            : "max-h-10 py-1 opacity-100"
+        }`}
+      >
         <div className="container-site flex justify-between items-center text-[11px] sm:text-xs">
           <p className="truncate font-medium tracking-tight">
             {locale === "mr"
@@ -67,7 +90,11 @@ export function Header() {
       </div>
 
       {/* Main Header Bar */}
-      <div className="container-site py-2.5 sm:py-3">
+      <div
+        className={`container-site transition-all duration-300 ease-out ${
+          isScrolled ? "py-1.5 sm:py-2" : "py-2.5 sm:py-3.5"
+        }`}
+      >
         <div className="flex items-center justify-between gap-3 sm:gap-6">
           {/* Mobile Menu Toggle */}
           <button
@@ -79,19 +106,32 @@ export function Header() {
             <Menu className="w-5 h-5" />
           </button>
 
-          {/* Logo with high-dpi optical rendering */}
+          {/* Logo on the left side with Akshardhara-inspired dynamic scroll scaling */}
           <Link
             href="/"
-            className="flex items-center shrink-0 active:scale-98 transition-transform rounded-lg focus-visible:ring-2 focus-visible:ring-[#E8850A]"
+            className="group flex items-center shrink-0 active:scale-98 transition-transform rounded-lg focus-visible:ring-2 focus-visible:ring-[#E8850A]"
+            aria-label="SahityaYatra"
           >
-            <Image
-              src="/images/logo.png"
-              alt="SahityaYatra"
-              width={160}
-              height={55}
-              priority
-              className="h-9 sm:h-11 w-auto object-contain"
-            />
+            <div
+              className={`relative flex items-center origin-left transition-all duration-300 ease-out ${
+                isScrolled
+                  ? "h-9 sm:h-10 md:h-11 lg:h-12 w-auto"
+                  : "h-12 sm:h-14 md:h-18 lg:h-20 xl:h-22 w-auto"
+              }`}
+            >
+              <Image
+                src="/images/logo.png"
+                alt="SahityaYatra"
+                width={320}
+                height={175}
+                priority
+                className={`w-auto object-contain transition-all duration-300 ease-out select-none drop-shadow-[0_1px_2px_rgba(31,26,22,0.06)] group-hover:drop-shadow-[0_2px_8px_rgba(232,133,10,0.18)] ${
+                  isScrolled
+                    ? "h-9 sm:h-10 md:h-11 lg:h-12"
+                    : "h-12 sm:h-14 md:h-18 lg:h-20 xl:h-22"
+                }`}
+              />
+            </div>
           </Link>
 
           {/* Desktop Search Bar (Apple-style pill with keyboard hint) */}
@@ -202,14 +242,14 @@ export function Header() {
               <Image
                 src="/images/logo.png"
                 alt="SahityaYatra"
-                width={130}
-                height={40}
-                className="h-8 w-auto object-contain"
+                width={220}
+                height={120}
+                className="h-12 w-auto object-contain drop-shadow-[0_1px_2px_rgba(31,26,22,0.06)]"
               />
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-[#2E2620] hover:text-[#E8850A] rounded-full"
+                className="p-2 text-[#2E2620] hover:text-[#E8850A] rounded-full active:scale-95 transition-transform"
                 aria-label={t("close")}
               >
                 <X className="w-5 h-5" />

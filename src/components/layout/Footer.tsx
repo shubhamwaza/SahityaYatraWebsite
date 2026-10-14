@@ -19,15 +19,15 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="inline-block active:scale-98 transition-transform">
-              {/* Logo in negative / brightened container for dark footer */}
-              <div className="bg-[#FCFBF7] p-2.5 rounded-xl inline-block shadow-sm border border-white/20">
+            <Link href="/" className="inline-block active:scale-98 transition-transform group">
+              {/* Logo in warm literary badge for dark footer */}
+              <div className="bg-[#F8F4EC] px-5 py-2.5 rounded-2xl inline-flex items-center shadow-md border border-[#DED0BC]/30 group-hover:border-[#E8850A]/40 transition-colors">
                 <Image
                   src="/images/logo.png"
                   alt="SahityaYatra"
-                  width={150}
-                  height={50}
-                  className="h-10 w-auto object-contain"
+                  width={260}
+                  height={145}
+                  className="h-12 sm:h-14 w-auto object-contain drop-shadow-[0_1px_1px_rgba(31,26,22,0.08)]"
                 />
               </div>
             </Link>
