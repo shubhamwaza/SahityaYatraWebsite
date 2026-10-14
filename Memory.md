@@ -197,18 +197,23 @@ SahityaYatraWebsite/
 │   │   │   ├── Header.tsx              ← Frosted glass nav + search pill
 │   │   │   ├── Footer.tsx              ← Editorial dark footer
 │   │   │   └── LanguageSwitcher.tsx    ← Apple segmented pill
+│   │   ├── cart/
+│   │   │   └── CartDrawer.tsx          ← Apple-grade slide-over cart with free shipping meter
 │   │   ├── product/
-│   │   │   ├── BookCard.tsx            ← 3D book spine + spring hover
-│   │   │   └── ProductDetailClient.tsx ← Sticky purchase bar + gallery
+│   │   │   ├── BookCard.tsx            ← 3D book spine + specular sheen + quick-add morph
+│   │   │   └── ProductDetailClient.tsx ← Sticky purchase bar + gallery + 3D book stage
 │   │   ├── home/
-│   │   │   ├── HeroCarousel.tsx        ← Apple Books editorial spotlight
-│   │   │   └── CategoryStrip.tsx       ← Segmented category pills
+│   │   │   ├── HeroCarousel.tsx        ← Editorial showcase with dynamic aura halos & accolades
+│   │   │   ├── CategoryStrip.tsx       ← Segmented category pills
+│   │   │   └── HeritagePavilion.tsx    ← 25-yr brass medallion seal, founder letter, tour footprint
 │   │   ├── shop/
 │   │   │   └── ShopClient.tsx
 │   │   ├── search/
 │   │   │   └── SearchClient.tsx
 │   │   └── contact/
 │   │       └── ContactForm.tsx
+│   ├── context/
+│   │   └── CartContext.tsx             ← Global cart state with ₹500 shipping progress & persistence
 │   ├── lib/
 │   │   ├── shopify/
 │   │   │   ├── client.ts               ← shopifyFetch GraphQL client
@@ -238,11 +243,28 @@ SahityaYatraWebsite/
 
 ---
 
+## 4-Pillar Frontend Beautification Elevation (Completed)
+
+1. **#1 Physical 3D Book Experience & Specular Sheen (`commit 645c86b`):**
+   - 900px CSS perspective stage, 3D paper fold indentation (`.book-spine-3d`), stacked cream paper edge lines (`repeating-linear-gradient`), diagonal glossy sheen sweep (`.book-sheen`), and dynamic cover aura glow (`.book-ambient-glow`).
+   - Tactile quick-add button with morphing green confirmation (`जोडले / Added`).
+2. **#2 Apple-Grade Slide-Over Cart Drawer (`commit 14c682d`):**
+   - Backdrop-blur spring slide-out drawer (`--ease-drawer`), animated ₹500 free shipping meter with celebrations, miniature 3D covers in cart rows, tactile quantity steppers (`-` `1` `+`), and Apple checkout CTA.
+3. **#3 Hero Editorial Showcase Overhaul (`commit 430d790`):**
+   - Ambient blurred radial halos matched to each book's dominant palette (`auraColor`), gold foil accolade pills (`साहित्य अकादमी पुरस्कार`), glass literary quote cards, publication year & translator chips, and award seal (`अभिजात ग्रंथ`).
+4. **#4 The Father's Heritage Exhibition Pavilion (`commit 236c0a2`):**
+   - 25-Year Commemorative Brass Medallion Seal (1999–2026 • २५+ वर्षे ग्रंथ निष्ठा).
+   - 4 Grand Heritage Stat Pillars (25+ Years, 5,000+ Curated Titles, 100+ Exhibitions, 100% Authentic Editions).
+   - Founder's Archival Letter Card with deckle-edge styling, founder quote, and Certified Exhibition Organizer badge.
+   - Exhibition Tour Footprint Ribbon celebrating Maharashtra book festivals (Pune, Mumbai, Nashik, Kolhapur, Sambhajinagar, Satara, Nagpur, Solapur, Thane).
+
+---
+
 ## Next Steps (Review & Deployment)
 
 1. **User & Father's Review:**
-   - Run `npm run dev` to preview the Apple Books design elevation and bilingual experience.
-   - When adding books in Shopify Admin (`Products > Add product`), they will automatically stream to the live site.
+   - Run `npm run dev` to preview the Apple Books design elevation and bilingual experience at `http://localhost:3000/mr` and `http://localhost:3000/en`.
+   - When adding books in Shopify Admin (`Products > Add product`), they stream automatically to the live site.
 2. **Deploy to Vercel:**
    - Connect GitHub repository `shubhamwaza/SahityaYatraWebsite` to Vercel.
    - Add environment variables in Vercel project settings:
