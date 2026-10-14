@@ -14,13 +14,15 @@ export function isShopifyConfigured(): boolean {
 export async function shopifyFetch<T>({
   query,
   variables,
-  cache = "force-cache",
+  cache = process.env.NODE_ENV === "development" ? "no-store" : "default",
   tags,
+  revalidate = 60,
 }: {
   query: string;
   variables?: Record<string, unknown>;
   cache?: RequestCache;
   tags?: string[];
+  revalidate?: number;
 }): Promise<{ status: number; body: { data?: T; errors?: Array<{ message: string }> } }> {
   if (!isShopifyConfigured()) {
     return {
@@ -43,7 +45,10 @@ export async function shopifyFetch<T>({
         ...(variables && { variables }),
       }),
       cache,
-      ...(tags && { next: { tags } }),
+      next: {
+        revalidate: process.env.NODE_ENV === "development" ? 0 : revalidate,
+        ...(tags && { tags }),
+      },
     });
 
     const body = await response.json();
