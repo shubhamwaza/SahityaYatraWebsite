@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "home": "Home",
+    "marathiBooks": "Marathi Books",
+    "englishBooks": "English Books",
+    "allBooks": "All Books",
+    "collections": "Collections",
+    "about": "About Us",
+    "contact": "Contact",
+    "search": "Search",
+    "cart": "Cart",
+    "account": "Account",
+    "menu": "Menu",
+    "close": "Close",
+    "language": "Language"
+  },
+  "home": {
+    "heroTitle": "Your Literary Journey Begins Here",
+    "heroSubtitle": "Discover Marathi and English books curated for every reader",
+    "heroCta": "Explore Books",
+    "newArrivals": "New Arrivals",
+    "newArrivalsMarathi": "नवीन आगमन | New Arrivals",
+    "viewAll": "View All",
+    "ourRecommendations": "Our Recommendations",
+    "ourRecommendationsMarathi": "आमच्या शिफारसी | Our Recommendations",
+    "marathiBooksSection": "मराठी पुस्तके | Marathi Books",
+    "englishBooksSection": "English Books",
+    "aboutTitle": "About SahityaYatra",
+    "aboutText": "SahityaYatra is a curated bookstore bringing Marathi and English literature to readers across India."
+  },
+  "categories": {
+    "marathiBooks": "Marathi Books",
+    "englishBooks": "English Books",
+    "poetry": "Poetry",
+    "biography": "Biography & Memoirs",
+    "history": "History",
+    "fiction": "Fiction",
+    "children": "Children's Books",
+    "classics": "Classics",
+    "allCategories": "All Categories"
+  },
+  "product": {
+    "addToCart": "Add to Cart",
+    "buyNow": "Buy Now",
+    "outOfStock": "Out of Stock",
+    "unavailable": "Unavailable",
+    "language": "Language",
+    "author": "Author",
+    "publisher": "Publisher",
+    "isbn": "ISBN",
+    "pages": "Pages",
+    "format": "Format",
+    "edition": "Edition",
+    "inStock": "In Stock",
+    "lowStock": "Only {count} left",
+    "description": "Description",
+    "specifications": "Book Details",
+    "relatedBooks": "You May Also Like",
+    "quantity": "Quantity",
+    "price": "Price"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "emptyMessage": "Browse our collection and find your next great read.",
+    "browsebooks": "Browse Books",
+    "subtotal": "Subtotal",
+    "checkout": "Proceed to Checkout",
+    "remove": "Remove",
+    "quantity": "Qty",
+    "continueShopping": "Continue Shopping",
+    "itemAdded": "Added to cart",
+    "itemRemoved": "Removed from cart"
+  },
+  "search": {
+    "placeholder": "Search by title, author, or ISBN…",
+    "label": "Search books",
+    "results": "{count} results for \"{query}\"",
+    "noResults": "No books found for \"{query}\"",
+    "noResultsMessage": "Try a different search term or browse our collections.",
+    "browseCollections": "Browse Collections",
+    "loading": "Searching…"
+  },
+  "filters": {
+    "title": "Filters",
+    "apply": "Apply Filters",
+    "reset": "Reset",
+    "close": "Close Filters",
+    "language": "Language",
+    "category": "Category",
+    "sortBy": "Sort By",
+    "sortNewest": "Newest First",
+    "sortOldest": "Oldest First",
+    "sortPriceLow": "Price: Low to High",
+    "sortPriceHigh": "Price: High to Low",
+    "sortTitle": "Title A–Z"
+  },
+  "about": {
+    "title": "About SahityaYatra",
+    "pageTitle": "About Us"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "name": "Your Name",
+    "email": "Email Address",
+    "message": "Message",
+    "send": "Send Message",
+    "success": "Thank you! We'll get back to you soon.",
+    "error": "Something went wrong. Please try again."
+  },
+  "policies": {
+    "privacy": "Privacy Policy",
+    "shipping": "Shipping & Delivery",
+    "returns": "Returns & Refunds",
+    "terms": "Terms & Conditions"
+  },
+  "footer": {
+    "tagline": "Your literary journey",
+    "followUs": "Follow Us",
+    "allRightsReserved": "All rights reserved",
+    "madeWith": "Made with ♥ for book lovers"
+  },
+  "errors": {
+    "notFound": "Page Not Found",
+    "notFoundMessage": "The page you're looking for doesn't exist.",
+    "goHome": "Go to Home",
+    "general": "Something went wrong",
+    "generalMessage": "Please try again or contact us if the problem continues.",
+    "tryAgain": "Try Again",
+    "productUnavailable": "This book is currently unavailable.",
+    "cartError": "Could not update cart. Please try again."
+  },
+  "loading": {
+    "products": "Loading books…",
+    "page": "Loading…"
+  },
+  "language": {
+    "en": "English",
+    "mr": "मराठी",
+    "switchTo": "Switch to {locale}"
+  },
+  "currency": {
+    "symbol": "₹",
+    "locale": "en-IN"
+  }
+}

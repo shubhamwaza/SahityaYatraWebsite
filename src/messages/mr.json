@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "home": "मुख्यपृष्ठ",
+    "marathiBooks": "मराठी पुस्तके",
+    "englishBooks": "इंग्रजी पुस्तके",
+    "allBooks": "सर्व पुस्तके",
+    "collections": "संग्रह",
+    "about": "आमच्याबद्दल",
+    "contact": "संपर्क",
+    "search": "शोधा",
+    "cart": "कार्ट",
+    "account": "खाते",
+    "menu": "मेनू",
+    "close": "बंद करा",
+    "language": "भाषा"
+  },
+  "home": {
+    "heroTitle": "तुमचा साहित्य प्रवास इथून सुरू होतो",
+    "heroSubtitle": "प्रत्येक वाचकासाठी निवडलेली मराठी व इंग्रजी पुस्तके",
+    "heroCta": "पुस्तके पाहा",
+    "newArrivals": "नवीन आगमन",
+    "newArrivalsMarathi": "नवीन आगमन | New Arrivals",
+    "viewAll": "सर्व पाहा",
+    "ourRecommendations": "आमच्या शिफारसी",
+    "ourRecommendationsMarathi": "आमच्या शिफारसी | Our Recommendations",
+    "marathiBooksSection": "मराठी पुस्तके | Marathi Books",
+    "englishBooksSection": "इंग्रजी पुस्तके",
+    "aboutTitle": "साहित्ययात्राबद्दल",
+    "aboutText": "साहित्ययात्रा ही एक निवडक पुस्तकांची दुकान आहे जी भारतभरातील वाचकांसाठी मराठी व इंग्रजी साहित्य आणते."
+  },
+  "categories": {
+    "marathiBooks": "मराठी पुस्तके",
+    "englishBooks": "इंग्रजी पुस्तके",
+    "poetry": "कविता",
+    "biography": "आत्मचरित्र व चरित्र",
+    "history": "इतिहास",
+    "fiction": "कथा",
+    "children": "बालसाहित्य",
+    "classics": "क्लासिक्स",
+    "allCategories": "सर्व श्रेणी"
+  },
+  "product": {
+    "addToCart": "कार्टमध्ये जोडा",
+    "buyNow": "आत्ता विकत घ्या",
+    "outOfStock": "साठा संपला",
+    "unavailable": "उपलब्ध नाही",
+    "language": "भाषा",
+    "author": "लेखक",
+    "publisher": "प्रकाशक",
+    "isbn": "ISBN",
+    "pages": "पृष्ठे",
+    "format": "स्वरूप",
+    "edition": "आवृत्ती",
+    "inStock": "साठा उपलब्ध",
+    "lowStock": "फक्त {count} शिल्लक",
+    "description": "वर्णन",
+    "specifications": "पुस्तकाची माहिती",
+    "relatedBooks": "हे पण आवडेल",
+    "quantity": "प्रमाण",
+    "price": "किंमत"
+  },
+  "cart": {
+    "title": "तुमची कार्ट",
+    "empty": "तुमची कार्ट रिकामी आहे",
+    "emptyMessage": "आमच्या संग्रहातून तुमचे पुढील पुस्तक शोधा.",
+    "browsebooks": "पुस्तके पाहा",
+    "subtotal": "एकूण रक्कम",
+    "checkout": "चेकआउट करा",
+    "remove": "काढा",
+    "quantity": "प्रमाण",
+    "continueShopping": "खरेदी सुरू ठेवा",
+    "itemAdded": "कार्टमध्ये जोडले",
+    "itemRemoved": "कार्टमधून काढले"
+  },
+  "search": {
+    "placeholder": "शीर्षक, लेखक किंवा ISBN ने शोधा…",
+    "label": "पुस्तके शोधा",
+    "results": "\"{query}\" साठी {count} निकाल",
+    "noResults": "\"{query}\" साठी कोणतेही पुस्तक मिळाले नाही",
+    "noResultsMessage": "वेगळा शब्द वापरून पाहा किंवा आमचे संग्रह पाहा.",
+    "browseCollections": "संग्रह पाहा",
+    "loading": "शोधत आहे…"
+  },
+  "filters": {
+    "title": "फिल्टर",
+    "apply": "फिल्टर लागू करा",
+    "reset": "रीसेट करा",
+    "close": "फिल्टर बंद करा",
+    "language": "भाषा",
+    "category": "श्रेणी",
+    "sortBy": "क्रमवारी",
+    "sortNewest": "नवीन आधी",
+    "sortOldest": "जुने आधी",
+    "sortPriceLow": "किंमत: कमी ते जास्त",
+    "sortPriceHigh": "किंमत: जास्त ते कमी",
+    "sortTitle": "शीर्षक अ–ज्ञ"
+  },
+  "about": {
+    "title": "साहित्ययात्राबद्दल",
+    "pageTitle": "आमच्याबद्दल"
+  },
+  "contact": {
+    "title": "आमच्याशी संपर्क करा",
+    "name": "तुमचे नाव",
+    "email": "ईमेल पत्ता",
+    "message": "संदेश",
+    "send": "संदेश पाठवा",
+    "success": "धन्यवाद! आम्ही लवकरच उत्तर देऊ.",
+    "error": "काहीतरी चुकले. पुन्हा प्रयत्न करा."
+  },
+  "policies": {
+    "privacy": "गोपनीयता धोरण",
+    "shipping": "शिपिंग व वितरण",
+    "returns": "परत व परतावा",
+    "terms": "अटी व शर्ती"
+  },
+  "footer": {
+    "tagline": "तुमचा साहित्य प्रवास",
+    "followUs": "आम्हाला फॉलो करा",
+    "allRightsReserved": "सर्व हक्क राखीव",
+    "madeWith": "पुस्तकप्रेमींसाठी ♥ ने बनवले"
+  },
+  "errors": {
+    "notFound": "पृष्ठ सापडले नाही",
+    "notFoundMessage": "तुम्ही शोधत असलेले पृष्ठ अस्तित्वात नाही.",
+    "goHome": "मुख्यपृष्ठावर जा",
+    "general": "काहीतरी चुकले",
+    "generalMessage": "पुन्हा प्रयत्न करा किंवा समस्या सुरू राहिल्यास आमच्याशी संपर्क करा.",
+    "tryAgain": "पुन्हा प्रयत्न करा",
+    "productUnavailable": "हे पुस्तक सध्या उपलब्ध नाही.",
+    "cartError": "कार्ट अपडेट करता आले नाही. पुन्हा प्रयत्न करा."
+  },
+  "loading": {
+    "products": "पुस्तके लोड होत आहेत…",
+    "page": "लोड होत आहे…"
+  },
+  "language": {
+    "en": "English",
+    "mr": "मराठी",
+    "switchTo": "{locale} मध्ये बदला"
+  },
+  "currency": {
+    "symbol": "₹",
+    "locale": "mr-IN"
+  }
+}

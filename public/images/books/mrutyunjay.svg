@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D2D44" />
+      <stop offset="100%" stop-color="#141414" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.3" />
+    </filter>
+  </defs>
+  
+  <!-- Book Cover Background -->
+  <rect width="400" height="600" fill="url(#grad)" rx="8" />
+  
+  <!-- Subtle Spine Line -->
+  <rect x="0" y="0" width="22" height="600" fill="#000000" opacity="0.25" />
+  <line x1="22" y1="0" x2="22" y2="600" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="1.5" />
+  
+  <!-- Decorative Frame -->
+  <rect x="36" y="32" width="330" height="536" fill="none" stroke="#E0A96D" stroke-opacity="0.35" stroke-width="1.5" rx="4" />
+  <rect x="42" y="38" width="318" height="524" fill="none" stroke="#E0A96D" stroke-opacity="0.15" stroke-width="1" rx="2" />
+  
+  <!-- Literary Emblem Motif -->
+  <g transform="translate(200, 150)">
+    <circle cx="0" cy="0" r="32" fill="none" stroke="#E0A96D" stroke-width="1.5" opacity="0.5" />
+    <path d="M-14,-6 C-8,-14 8,-14 14,-6 C18,0 0,16 0,16 C0,16 -18,0 -14,-6 Z" fill="#E0A96D" opacity="0.8" />
+  </g>
+
+  <!-- Title -->
+  <text x="200" y="270" text-anchor="middle" font-family="'Mukta', 'IBM Plex Sans', sans-serif" font-weight="700" font-size="28" fill="#FFFFFF" letter-spacing="0.5">
+    मृत्यूंजय
+  </text>
+  
+  <!-- Thin divider -->
+  <line x1="120" y1="310" x2="280" y2="310" stroke="#E0A96D" stroke-width="1.5" opacity="0.6" />
+  
+  <!-- Author -->
+  <text x="200" y="350" text-anchor="middle" font-family="'Mukta', 'IBM Plex Sans', sans-serif" font-weight="500" font-size="20" fill="#E0A96D">
+    शिवाजी सावंत
+  </text>
+  
+  <!-- Category / Note -->
+  <text x="200" y="385" text-anchor="middle" font-family="'Mukta', 'IBM Plex Sans', sans-serif" font-weight="400" font-size="13" fill="#DED0BC" opacity="0.85">
+    कर्णाची अमर जीवनगाथा
+  </text>
+  
+  <!-- Bottom Brand Mark -->
+  <g transform="translate(200, 520)">
+    <text x="0" y="0" text-anchor="middle" font-family="'Mukta', sans-serif" font-weight="600" font-size="12" fill="#E0A96D" opacity="0.75" letter-spacing="2">
+      साहित्ययात्रा
+    </text>
+  </g>
+</svg>
