@@ -125,10 +125,15 @@
 - Applied Apple Human Interface Guidelines and Emil Kowalski design engineering principles:
   - Custom fluid cubic-bezier easing tokens (`--ease-apple`, `--ease-out`, `--ease-spring`)
   - Tactile micro-interactions: `:active { transform: scale(0.97); }`
-  - 3D book spine gradient and shadow simulation (`book-spine-3d`, `shadow-book-3d`)
+  - **Physical 3D Book Experience (`.book-stage`, `.book-spine-3d`, `.book-sheen`, `.book-ambient-glow`):**
+    - Multi-stop physical book spine crease and indentation on left edge
+    - Multi-striped creamy simulated paper pages edge on right (`#FFFDF8` to `#DFD3BE`)
+    - Specular light sheen reflection sweeping across covers on hover
+    - Ambient diffuse colored aura matching book covers
+    - Top-left classic masterpiece foil badge (★ अभिजात / ★ Classic)
+    - Tactile Quick-Add micro-interaction with sprout green confirmation morph ("जोडले / Added")
   - Frosted glass translucent navigation (`glass-nav`, `backdrop-blur-md`)
   - Redesigned 2-column Apple Books Editorial Hero Showcase with dynamic spotlight
-  - Redesigned BookCard with spring hover physics and optical typography hierarchy
   - Redesigned CategoryStrip with Apple segmented pill controls
   - Fixed Tailwind CSS v4 compilation with `@tailwindcss/postcss` and `postcss.config.mjs`
 
