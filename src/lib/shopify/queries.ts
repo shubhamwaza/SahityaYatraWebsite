@@ -113,29 +113,39 @@ export async function getBooks(options?: {
     }
   `;
 
-  const response = await shopifyFetch<{
-    products: {
-      edges: Array<{ node: ShopifyProduct }>;
-    };
-  }>({
-    query,
-    variables: {
-      first: options?.first || 50,
-      query: options?.query,
-      sortKey: options?.sortKey || "BEST_SELLING",
-      reverse: options?.reverse || false,
-    },
-    tags: ["products"],
-  });
+  try {
+    const response = await shopifyFetch<{
+      products: {
+        edges: Array<{ node: ShopifyProduct }>;
+      };
+    }>({
+      query,
+      variables: {
+        first: options?.first || 50,
+        query: options?.query,
+        sortKey: options?.sortKey || "BEST_SELLING",
+        reverse: options?.reverse || false,
+      },
+      tags: ["products"],
+    });
 
-  const shopifyProducts = response.body.data?.products?.edges || [];
+    const rawShopifyEdges = response.body.data?.products?.edges || [];
+    const shopifyBooks = rawShopifyEdges.map(({ node }) => normalizeShopifyProduct(node));
 
-  // Graceful fallback: If store has 0 products uploaded, return sample books
-  if (shopifyProducts.length === 0) {
+    if (shopifyBooks.length === 0) {
+      return getAllBooks();
+    }
+
+    // Merge Shopify products at the front, supplemented by sample books to keep the catalog rich
+    const sampleBooks = getAllBooks();
+    const existingHandles = new Set(shopifyBooks.map((p) => p.handle));
+    const supplemental = sampleBooks.filter((b) => !existingHandles.has(b.handle));
+
+    return [...shopifyBooks, ...supplemental];
+  } catch (error) {
+    console.error("Failed to fetch books from Shopify Storefront API:", error);
     return getAllBooks();
   }
-
-  return shopifyProducts.map(({ node }) => normalizeShopifyProduct(node));
 }
 
 /**

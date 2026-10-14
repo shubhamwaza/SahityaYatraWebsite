@@ -1,5 +1,4 @@
 import React from "react";
-import { useTranslations, useLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import { Link } from "@/lib/i18n/navigation";
@@ -8,12 +7,7 @@ import { CategoryStrip } from "@/components/home/CategoryStrip";
 import { BookCard } from "@/components/product/BookCard";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import {
-  getNewArrivals,
-  getRecommendations,
-  getMarathiBooks,
-  getEnglishBooks,
-} from "@/lib/sampleBooks";
+import { getBooks } from "@/lib/shopify/queries";
 import {
   ArrowRight,
   BookOpen,
@@ -39,15 +33,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function HomePage() {
-  const t = useTranslations("home");
-  const navT = useTranslations("nav");
-  const locale = useLocale();
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "home" });
+  const navT = await getTranslations({ locale, namespace: "nav" });
 
-  const newArrivals = getNewArrivals();
-  const recommendations = getRecommendations();
-  const marathiHighlights = getMarathiBooks().slice(2, 6);
-  const englishHighlights = getEnglishBooks().slice(0, 4);
+  const allBooks = await getBooks();
+  const newArrivals = allBooks.slice(0, 4);
+  const recommendations =
+    allBooks.slice(4, 8).length > 0 ? allBooks.slice(4, 8) : allBooks.slice(0, 4);
+  const marathiHighlights = allBooks
+    .filter((b) => b.language === "marathi")
+    .slice(0, 4);
+  const englishHighlights = allBooks
+    .filter((b) => b.language === "english")
+    .slice(0, 4);
 
   return (
     <div className="space-y-16 sm:space-y-24 pb-24">
