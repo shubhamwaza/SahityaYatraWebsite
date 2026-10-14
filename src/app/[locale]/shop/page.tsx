@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { getAllBooks } from "@/lib/sampleBooks";
+import { getBooks } from "@/lib/shopify/queries";
 import { ShopClient } from "@/components/shop/ShopClient";
 import { Badge } from "@/components/ui/Badge";
 import { BookOpen } from "lucide-react";
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ShopPage({ params }: Props) {
   const { locale } = await params;
-  const books = getAllBooks();
+  const books = await getBooks();
 
   return (
     <div className="container-site py-8 sm:py-12 space-y-6">

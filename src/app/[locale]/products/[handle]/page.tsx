@@ -1,8 +1,9 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getBookByHandle, getAllBooks } from "@/lib/sampleBooks";
+import { getBookByHandle, getBooks } from "@/lib/shopify/queries";
 import { ProductDetailClient } from "@/components/product/ProductDetailClient";
+import { getAllBooks } from "@/lib/sampleBooks";
 
 type Props = {
   params: Promise<{ locale: string; handle: string }>;
@@ -10,7 +11,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { handle } = await params;
-  const book = getBookByHandle(handle);
+  const book = await getBookByHandle(handle);
 
   if (!book) {
     return {
@@ -41,14 +42,15 @@ export function generateStaticParams() {
 
 export default async function ProductDetailPage({ params }: Props) {
   const { handle } = await params;
-  const book = getBookByHandle(handle);
+  const book = await getBookByHandle(handle);
 
   if (!book) {
     notFound();
   }
 
   // Get up to 4 related books from the same category or language
-  const relatedBooks = getAllBooks()
+  const allBooks = await getBooks();
+  const relatedBooks = allBooks
     .filter((b) => b.id !== book.id && (b.language === book.language || b.categories.some(c => book.categories.includes(c))))
     .slice(0, 4);
 

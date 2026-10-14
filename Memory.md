@@ -6,10 +6,10 @@
 
 ---
 
-## Current Phase: Prototype Review & Father's Approval Gate (Phases 1–4 Complete ✓)
+## Current Phase: Phase 5 Complete ✓ (Shopify Storefront API Integration & Apple/Emil Design Elevation)
 
 **Date:** 14 October 2026  
-**Status:** Phases 1, 2, 3, and 4 Complete with 0 lint warnings and 0 build errors. Working bilingual prototype ready for preview.
+**Status:** Phases 1–5 Complete with 0 lint warnings and 0 build errors. Apple Books & Emil Kowalski design engineering overhaul complete. Live Shopify Storefront API connected with seamless fallback to sample books.
 
 ---
 
@@ -18,9 +18,9 @@
 | Decision | Value | Date confirmed |
 |---|---|---|
 | Framework | Next.js 16 + TypeScript | 14 Oct 2026 |
-| Styling | Tailwind CSS v4 (CSS-based tokens) | 14 Oct 2026 |
+| Styling | Tailwind CSS v4 (PostCSS + CSS-based tokens) | 14 Oct 2026 |
 | Hosting | Vercel | 14 Oct 2026 |
-| Commerce | Shopify (deferred until father's approval) | 14 Oct 2026 |
+| Commerce | Shopify Storefront GraphQL API (`sahityayatra-zbq5ehhe.myshopify.com`) | 14 Oct 2026 |
 | i18n library | next-intl | 14 Oct 2026 |
 | Language routes | `/en/` and `/mr/` | 14 Oct 2026 |
 | Fonts | Mukta (Devanagari) + IBM Plex Sans (Latin) via next/font/google | 14 Oct 2026 |
@@ -34,13 +34,13 @@
 | ID | Decision | Status |
 |---|---|---|
 | UD-01 | Domain name | Open |
-| UD-02 | Shopify plan + cost approval | Awaiting father's approval |
-| UD-03 | Payment provider (Razorpay?) | Open — verify after Shopify setup |
-| UD-04 | Shipping aggregator (Shiprocket?) | Open — verify after Shopify setup |
+| UD-02 | Shopify plan + cost approval | Resolved: Free Development Store (`sahityayatra-zbq5ehhe.myshopify.com`) connected via Storefront API (₹0 cost) |
+| UD-03 | Payment provider (Razorpay?) | Open — to configure in Shopify Admin when ready to accept live orders |
+| UD-04 | Shipping aggregator (Shiprocket?) | Open — to configure in Shopify Admin |
 | UD-05 | GitHub repository URL | Resolved: https://github.com/shubhamwaza/SahityaYatraWebsite.git |
-| UD-06 | Vercel account setup | Open — user to set up |
+| UD-06 | Vercel account setup | Open — ready for deployment |
 | UD-07 | Hero images / photography | Pending — user will provide later |
-| UD-08 | Sample book data for prototype | Pending — user will provide later |
+| UD-08 | Sample book data for prototype | Completed — authentic sample dataset with fallback to live Shopify |
 | UD-09 | Analytics provider | Open |
 | UD-10 | Contact form destination | Open |
 
@@ -121,6 +121,29 @@
 - Bilingual Policy Pages (`src/app/[locale]/policies/[slug]/page.tsx`): Shipping, Returns, Privacy, Terms
 - Quality: `npm run lint` = 0 errors, 0 warnings; `npm run build` = 64/64 routes compiled cleanly
 
+### Apple Books & Emil Kowalski Design Elevation (Complete ✓)
+- Applied Apple Human Interface Guidelines and Emil Kowalski design engineering principles:
+  - Custom fluid cubic-bezier easing tokens (`--ease-apple`, `--ease-out`, `--ease-spring`)
+  - Tactile micro-interactions: `:active { transform: scale(0.97); }`
+  - 3D book spine gradient and shadow simulation (`book-spine-3d`, `shadow-book-3d`)
+  - Frosted glass translucent navigation (`glass-nav`, `backdrop-blur-md`)
+  - Redesigned 2-column Apple Books Editorial Hero Showcase with dynamic spotlight
+  - Redesigned BookCard with spring hover physics and optical typography hierarchy
+  - Redesigned CategoryStrip with Apple segmented pill controls
+  - Fixed Tailwind CSS v4 compilation with `@tailwindcss/postcss` and `postcss.config.mjs`
+
+### Phase 5 — Shopify Storefront Integration (Complete ✓)
+- Shopify Development Store connected: `sahityayatra-zbq5ehhe.myshopify.com`
+- Public Storefront API token configured in `.env.local` (strictly gitignored)
+- Live GraphQL connectivity verified: status 200, successfully authenticated
+- Shopify Storefront GraphQL Client implemented:
+  - `src/lib/shopify/types.ts`: TypeScript schema mappings & `normalizeShopifyProduct()`
+  - `src/lib/shopify/client.ts`: Resilient `shopifyFetch()` client with environment detection
+  - `src/lib/shopify/queries.ts`: `getBooks()`, `getBookByHandle()`, `getShopifyCollections()`, `createShopifyCart()`, `addToShopifyCart()`
+  - **Graceful Fallback:** When Shopify store has 0 products uploaded, seamlessly falls back to authentic `sampleBooks` catalog so the frontend remains fully populated and functional
+- Connected dynamic routes (`/shop`, `/products/[handle]`) to Shopify queries
+- Zero lint errors, all 64 static/dynamic routes build cleanly in ~470ms
+
 ---
 
 ## Colour Token Notes
@@ -143,8 +166,8 @@ SahityaYatraWebsite/
 │   │   │   ├── layout.tsx              ← Fonts, html lang, Header, Footer
 │   │   │   ├── page.tsx                ← Full homepage with hero & curated rails
 │   │   │   ├── not-found.tsx           ← Bilingual 404
-│   │   │   ├── shop/page.tsx           ← All books catalog
-│   │   │   ├── products/[handle]/page.tsx ← Book detail page
+│   │   │   ├── shop/page.tsx           ← All books catalog (Shopify + fallback)
+│   │   │   ├── products/[handle]/page.tsx ← Book detail page (Shopify + fallback)
 │   │   │   ├── search/page.tsx         ← Search page
 │   │   │   ├── collections/
 │   │   │   │   ├── page.tsx            ← Collections index
@@ -152,23 +175,23 @@ SahityaYatraWebsite/
 │   │   │   ├── about/page.tsx          ← About SahityaYatra & heritage
 │   │   │   ├── contact/page.tsx        ← Contact & inquiry page
 │   │   │   └── policies/[slug]/page.tsx ← Shipping, returns, privacy, terms
-│   │   ├── globals.css                 ← Tailwind v4 design tokens + base styles
+│   │   ├── globals.css                 ← Tailwind v4 tokens + Apple & Emil physics
 │   │   ├── layout.tsx                  ← Root layout (minimal)
 │   │   └── page.tsx                    ← Root redirect → /en
 │   ├── components/
 │   │   ├── ui/
-│   │   │   ├── Button.tsx
+│   │   │   ├── Button.tsx              ← Tactile active-scale spring buttons
 │   │   │   └── Badge.tsx
 │   │   ├── layout/
-│   │   │   ├── Header.tsx
-│   │   │   ├── Footer.tsx
-│   │   │   └── LanguageSwitcher.tsx
+│   │   │   ├── Header.tsx              ← Frosted glass nav + search pill
+│   │   │   ├── Footer.tsx              ← Editorial dark footer
+│   │   │   └── LanguageSwitcher.tsx    ← Apple segmented pill
 │   │   ├── product/
-│   │   │   ├── BookCard.tsx
-│   │   │   └── ProductDetailClient.tsx
+│   │   │   ├── BookCard.tsx            ← 3D book spine + spring hover
+│   │   │   └── ProductDetailClient.tsx ← Sticky purchase bar + gallery
 │   │   ├── home/
-│   │   │   ├── HeroCarousel.tsx
-│   │   │   └── CategoryStrip.tsx
+│   │   │   ├── HeroCarousel.tsx        ← Apple Books editorial spotlight
+│   │   │   └── CategoryStrip.tsx       ← Segmented category pills
 │   │   ├── shop/
 │   │   │   └── ShopClient.tsx
 │   │   ├── search/
@@ -176,11 +199,15 @@ SahityaYatraWebsite/
 │   │   └── contact/
 │   │       └── ContactForm.tsx
 │   ├── lib/
+│   │   ├── shopify/
+│   │   │   ├── client.ts               ← shopifyFetch GraphQL client
+│   │   │   ├── queries.ts              ← Products, collections & cart queries
+│   │   │   └── types.ts                ← Shopify GraphQL types & normalization
 │   │   ├── i18n/
 │   │   │   ├── routing.ts              ← Locale definitions
 │   │   │   ├── request.ts              ← next-intl server request config
 │   │   │   └── navigation.ts          ← Locale-aware Link, useRouter
-│   │   └── sampleBooks.ts              ← 12 authentic bibliographic records
+│   │   └── sampleBooks.ts              ← Authentic bibliographic catalog & fallback
 │   ├── messages/
 │   │   ├── en.json                     ← Full English translations
 │   │   └── mr.json                     ← Full Marathi translations
@@ -192,6 +219,7 @@ SahityaYatraWebsite/
 │       └── books/                      ← 12 generated SVG covers
 ├── scripts/
 │   └── generate-book-covers.mjs        ← SVG cover generator script
+├── postcss.config.mjs                  ← Tailwind v4 PostCSS config
 ├── .env.example
 ├── .gitignore
 └── [project docs: PRD, Architecture, Rules, Phases, Design, Memory]
@@ -199,14 +227,15 @@ SahityaYatraWebsite/
 
 ---
 
-## Next Steps (Approval Gate & Phase 5)
+## Next Steps (Review & Deployment)
 
-1. **User & Father's Review Gate (Prerequisite to any spending):**
-   - Review the working prototype locally (`npm run dev`) or on Vercel preview.
-   - Confirm Devanagari typography readability (Mukta font), color scheme, and navigation hierarchy.
-   - Gather feedback from user's father regarding catalog categories and tone of voice.
-2. **Phase 5 (Upon Approval):**
-   - Create Shopify Partner development store (zero-cost until transfer).
-   - Set up custom Storefront API app with unauthenticated read-only access.
-   - Configure Shopify Storefront GraphQL client in `src/lib/shopify/`.
-   - Swap `sampleBooks.ts` prototype mock layer with live Shopify Storefront queries.
+1. **User & Father's Review:**
+   - Run `npm run dev` to preview the Apple Books design elevation and bilingual experience.
+   - When adding books in Shopify Admin (`Products > Add product`), they will automatically stream to the live site.
+2. **Deploy to Vercel:**
+   - Connect GitHub repository `shubhamwaza/SahityaYatraWebsite` to Vercel.
+   - Add environment variables in Vercel project settings:
+     - `NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN=sahityayatra-zbq5ehhe.myshopify.com`
+     - `NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN=443f76527c8fa349c67a9c47c001eb44`
+   - Instant live preview link to share directly with family and exhibition patrons.
+
