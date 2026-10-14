@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Link } from "@/lib/i18n/navigation";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { CategoryStrip } from "@/components/home/CategoryStrip";
+import { HeritagePavilion } from "@/components/home/HeritagePavilion";
 import { BookCard } from "@/components/product/BookCard";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
@@ -11,10 +12,7 @@ import { getBooks } from "@/lib/shopify/queries";
 import {
   ArrowRight,
   BookOpen,
-  MapPin,
   Sparkles,
-  Truck,
-  HeartHandshake,
 } from "lucide-react";
 
 type Props = {
@@ -36,7 +34,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "home" });
-  const navT = await getTranslations({ locale, namespace: "nav" });
 
   const allBooks = await getBooks();
   const newArrivals = allBooks.slice(0, 4);
@@ -212,101 +209,8 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 7. Exhibition Heritage & Brand Trust Narrative */}
-      <section className="container-site">
-        <div className="rounded-3xl bg-white border border-[#DED0BC]/80 p-8 sm:p-12 lg:p-16 shadow-[0_4px_20px_-2px_rgba(31,26,22,0.06)]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Story */}
-            <div className="space-y-4">
-              <Badge variant="saffron" size="sm">
-                <MapPin className="w-3.5 h-3.5 mr-1" />
-                {locale === "mr" ? "ग्रंथ प्रदर्शन परंपरा" : "Exhibition Roots"}
-              </Badge>
-
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#2E2620] leading-snug">
-                {locale === "mr"
-                  ? "प्रत्यक्ष प्रदर्शनांपासून सुरू झालेला वाचनप्रवास"
-                  : "Born From Book Exhibitions, Now Across India"}
-              </h2>
-
-              <p className="text-xs sm:text-sm text-[#5C4E42] leading-relaxed">
-                {locale === "mr"
-                  ? "साहित्ययात्रा ही केवळ एक ऑनलाइन दुकान नसून, वर्षानुवर्षे ग्रंथ प्रदर्शनांच्या माध्यमातून वाचकांशी जोडलेली एक विश्वासू संस्था आहे. 5,000 पेक्षा जास्त पुस्तकांच्या समृद्ध अनुभवातून आम्ही प्रत्येक वाचकासाठी योग्य पुस्तक निवडण्यास मदत करतो."
-                  : "SahityaYatra began with offline book exhibitions, speaking directly with readers across Maharashtra. Drawing from our broader catalogue of over 5,000 titles, we curate reading that enriches minds and endures across generations."}
-              </p>
-
-              <div className="pt-2 flex flex-wrap items-center gap-4">
-                <Link href="/about">
-                  <Button variant="outline" size="md">
-                    <span>{navT("about")}</span>
-                    <ArrowRight className="w-4 h-4 ml-1" />
-                  </Button>
-                </Link>
-
-                <a
-                  href="https://www.facebook.com/SahityaYatraShop"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs sm:text-sm font-semibold text-[#E8850A] hover:underline"
-                >
-                  Facebook: /SahityaYatraShop ↗
-                </a>
-              </div>
-            </div>
-
-            {/* 3 Value Pillars */}
-            <div className="space-y-3.5">
-              <div className="flex items-start gap-3.5 p-4 rounded-xl bg-[#F8F4EC] border border-[#DED0BC]/60">
-                <div className="p-2 rounded-lg bg-[#E8850A]/10 text-[#E8850A] shrink-0 mt-0.5">
-                  <BookOpen className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-[#2E2620]">
-                    {locale === "mr" ? "प्रामाणिक ग्रंथ निवड" : "Literary Curation"}
-                  </h3>
-                  <p className="text-xs text-[#5C4E42] mt-0.5">
-                    {locale === "mr"
-                      ? "केवळ लोकप्रिय नव्हे, तर वाचनीय व विचारप्रवर्तक पुस्तकांची निवड."
-                      : "Handpicked literature valued for substance, quality, and literary merit."}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3.5 p-4 rounded-xl bg-[#F8F4EC] border border-[#DED0BC]/60">
-                <div className="p-2 rounded-lg bg-[#2E7D32]/10 text-[#2E7D32] shrink-0 mt-0.5">
-                  <Truck className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-[#2E2620]">
-                    {locale === "mr" ? "सुरक्षित भारतभर वितरण" : "Careful Delivery in India"}
-                  </h3>
-                  <p className="text-xs text-[#5C4E42] mt-0.5">
-                    {locale === "mr"
-                      ? "पुस्तकांना इजा पोहोचणार नाही अशा सुरक्षित पॅकिंगसह घरपोच."
-                      : "Respectful, damage-free packaging delivered straight to your doorstep."}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3.5 p-4 rounded-xl bg-[#F8F4EC] border border-[#DED0BC]/60">
-                <div className="p-2 rounded-lg bg-[#3F51B5]/10 text-[#3F51B5] shrink-0 mt-0.5">
-                  <HeartHandshake className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-[#2E2620]">
-                    {locale === "mr" ? "वाचकांचा विश्वास" : "Reader-First Support"}
-                  </h3>
-                  <p className="text-xs text-[#5C4E42] mt-0.5">
-                    {locale === "mr"
-                      ? "पुस्तकांच्या निवडीत व खरेदीत वैयक्तिक मदत व प्रामाणिक मार्गदर्शन."
-                      : "Honest customer support dedicated to assisting book lovers."}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 7. The Father's Heritage Exhibition Pavilion (25+ Years Legacy) */}
+      <HeritagePavilion />
     </div>
   );
 }
