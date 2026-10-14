@@ -132,6 +132,12 @@
     - Ambient diffuse colored aura matching book covers
     - Top-left classic masterpiece foil badge (★ अभिजात / ★ Classic)
     - Tactile Quick-Add micro-interaction with sprout green confirmation morph ("जोडले / Added")
+  - **Apple-Grade Slide-Over Cart Drawer (`CartDrawer.tsx` & `CartContext.tsx`):**
+    - Fluid spring-animated slide-over drawer with backdrop blur scrim
+    - Live All-India Free Delivery Progress Bar (₹500 threshold with dynamic remaining meter)
+    - Item list with miniature 3D book covers, title, author, price, and tactile quantity steppers (`-` `1` `+`)
+    - Client-side persistence via `localStorage`
+    - Apple high-contrast checkout CTA with security badges (256-bit secure checkout, 100% genuine books)
   - Frosted glass translucent navigation (`glass-nav`, `backdrop-blur-md`)
   - Redesigned 2-column Apple Books Editorial Hero Showcase with dynamic spotlight
   - Redesigned CategoryStrip with Apple segmented pill controls
