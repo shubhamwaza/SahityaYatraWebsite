@@ -37,7 +37,7 @@
 | UD-02 | Shopify plan + cost approval | Awaiting father's approval |
 | UD-03 | Payment provider (Razorpay?) | Open — verify after Shopify setup |
 | UD-04 | Shipping aggregator (Shiprocket?) | Open — verify after Shopify setup |
-| UD-05 | GitHub repository URL | Open — user to create/share |
+| UD-05 | GitHub repository URL | Resolved: https://github.com/shubhamwaza/SahityaYatraWebsite.git |
 | UD-06 | Vercel account setup | Open — user to set up |
 | UD-07 | Hero images / photography | Pending — user will provide later |
 | UD-08 | Sample book data for prototype | Pending — user will provide later |
