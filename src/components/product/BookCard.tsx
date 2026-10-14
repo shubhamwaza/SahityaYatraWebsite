@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import { Book } from "@/types";
 import { Badge } from "@/components/ui/Badge";
+import { useCart } from "@/context/CartContext";
 import { ShoppingBag, Check } from "lucide-react";
 
 export interface BookCardProps {
@@ -16,11 +17,13 @@ export interface BookCardProps {
 export function BookCard({ book, priority = false }: BookCardProps) {
   const t = useTranslations("product");
   const cartT = useTranslations("cart");
+  const { addItem } = useCart();
   const [added, setAdded] = useState(false);
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    addItem(book, 1, true);
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useCart } from "@/context/CartContext";
 import { Search, ShoppingBag, Menu, X, ArrowRight } from "lucide-react";
 
 export function Header() {
@@ -13,6 +14,7 @@ export function Header() {
   const searchT = useTranslations("search");
   const locale = useLocale();
   const router = useRouter();
+  const { totalCount, openCart } = useCart();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -123,17 +125,20 @@ export function Header() {
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <LanguageSwitcher />
 
-            {/* Cart Icon Link */}
-            <Link
-              href="/shop"
-              className="p-2.5 text-[#1F1A16] hover:text-[#E8850A] active:scale-90 transition-transform relative focus-visible:ring-2 focus-visible:ring-[#E8850A] rounded-full bg-white/60 hover:bg-white border border-[#DED0BC]/60 shadow-2xs"
+            {/* Cart Trigger Button (Opens Apple Slide-Over Drawer) */}
+            <button
+              type="button"
+              onClick={openCart}
+              className="p-2.5 text-[#1F1A16] hover:text-[#E8850A] active:scale-90 transition-transform relative focus-visible:ring-2 focus-visible:ring-[#E8850A] rounded-full bg-white/70 hover:bg-white border border-[#DED0BC]/70 shadow-2xs cursor-pointer"
               aria-label={t("cart")}
             >
               <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="absolute -top-1 -right-1 bg-[#E8850A] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">
-                0
-              </span>
-            </Link>
+              {totalCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-[#E8850A] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">
+                  {totalCount}
+                </span>
+              )}
+            </button>
           </div>
         </div>
 

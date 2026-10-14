@@ -7,6 +7,8 @@ import { routing } from "@/lib/i18n/routing";
 import type { Locale } from "@/types";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { CartProvider } from "@/context/CartContext";
+import { CartDrawer } from "@/components/cart/CartDrawer";
 import "@/app/globals.css";
 
 // ── Fonts ──────────────────────────────────────────────────────────────────
@@ -87,11 +89,14 @@ export default async function LocaleLayout({ children, params }: Props) {
       </head>
       <body className="min-h-screen flex flex-col bg-[#F8F4EC] text-[#2E2620]">
         <NextIntlClientProvider messages={messages} locale={locale}>
-          <Header />
-          <div className="flex-1">
-            {children}
-          </div>
-          <Footer />
+          <CartProvider>
+            <Header />
+            <div className="flex-1">
+              {children}
+            </div>
+            <Footer />
+            <CartDrawer />
+          </CartProvider>
         </NextIntlClientProvider>
       </body>
     </html>

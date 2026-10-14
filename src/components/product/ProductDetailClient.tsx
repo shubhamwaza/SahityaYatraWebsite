@@ -8,6 +8,7 @@ import { Book } from "@/types";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { BookCard } from "@/components/product/BookCard";
+import { useCart } from "@/context/CartContext";
 import {
   ShoppingBag,
   Check,
@@ -28,6 +29,7 @@ export function ProductDetailClient({
   const cartT = useTranslations("cart");
   const navT = useTranslations("nav");
   const locale = useLocale();
+  const { addItem } = useCart();
 
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
@@ -35,6 +37,7 @@ export function ProductDetailClient({
   const mainBuyBoxRef = useRef<HTMLDivElement>(null);
 
   const handleAddToCart = () => {
+    addItem(book, quantity, true);
     setAdded(true);
     setTimeout(() => setAdded(false), 2500);
   };

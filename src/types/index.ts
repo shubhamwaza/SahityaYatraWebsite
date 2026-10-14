@@ -42,3 +42,10 @@ export interface NavItem {
   href: string;
   children?: NavItem[];
 }
+
+// Shopping Cart
+export interface CartItem {
+  book: Book;
+  quantity: number;
+}
+
