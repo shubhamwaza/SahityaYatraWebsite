@@ -69,7 +69,7 @@ export function CategoryStrip() {
   return (
     <nav
       aria-label="Category shortcuts"
-      className="w-full bg-[#FCFBF7] border-b border-[#DED0BC]/70 py-3 shadow-2xs sticky top-[69px] sm:top-[75px] z-30 backdrop-blur-md"
+      className="w-full bg-[#FCFBF7] border-b border-[#DED0BC]/70 py-3.5 shadow-2xs"
     >
       <div className="container-site">
         {/* Horizontal scroll container with hidden scrollbar styling */}

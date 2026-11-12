@@ -34,26 +34,16 @@ export function HeritagePavilion() {
 
   return (
     <section className="container-site" aria-label="Exhibition Heritage">
-      <div className="relative rounded-3xl bg-gradient-to-br from-[#241A14] via-[#2F2119] to-[#1C130E] text-white p-7 sm:p-12 lg:p-16 overflow-hidden shadow-2xl border border-[#D4AF37]/30">
-        {/* Ambient Warm Golden Halos */}
+      <div className="relative rounded-3xl bg-[#1C1612] text-white p-7 sm:p-12 lg:p-16 overflow-hidden shadow-2xl border border-[#D4AF37]/35">
+        {/* Subtle, Dignified Bookcloth Warmth (Quiet Ambient Gradient) */}
         <div
-          className="absolute -right-24 -top-24 w-[420px] sm:w-[540px] h-[420px] sm:h-[540px] rounded-full bg-[#E8850A]/20 blur-[100px] pointer-events-none"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-[#236B2B]/20 blur-3xl pointer-events-none"
-          aria-hidden="true"
-        />
-
-        {/* Vintage Literary Archival Grid Pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#F5A020_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"
+          className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none"
           aria-hidden="true"
         />
 
         <div className="relative z-10 space-y-10 sm:space-y-12">
-          {/* Header Row: Title & Commemorative Brass Seal */}
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-white/15">
+          {/* ── Header Row: Title & Commemorative Heritage Seal ── */}
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-white/12">
             <div className="space-y-3 max-w-2xl">
               <div className="inline-flex items-center gap-2">
                 <Badge variant="saffron" size="sm" className="shadow-xs backdrop-blur-md">
@@ -82,32 +72,27 @@ export function HeritagePavilion() {
               </p>
             </div>
 
-            {/* Commemorative Brass Medallion Seal (Honor to Father's 25 Years) */}
+            {/* Commemorative Embossed Gold Foil Seal */}
             <div className="shrink-0 flex items-center justify-start lg:justify-end">
-              <div className="relative group/seal">
-                {/* Golden Seal Rotating Outer Glow */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F5A020] opacity-30 blur-lg group-hover/seal:opacity-60 transition-opacity" />
-
-                <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-[#3D291F] via-[#2A1B14] to-[#1C120D] border-2 border-[#D4AF37]/60 shadow-xl flex flex-col items-center justify-center text-center p-2">
-                  <Award className="w-6 h-6 text-[#F5A020] mb-0.5" />
-                  <span className="text-base sm:text-lg font-black text-white tracking-tight leading-none">
-                    २५+ वर्षे
-                  </span>
-                  <span className="text-[9px] sm:text-[10px] font-bold text-[#F5E6BE] uppercase tracking-wider mt-0.5">
-                    {locale === "mr" ? "ग्रंथ निष्ठा" : "Heritage"}
-                  </span>
-                  <span className="text-[8px] text-[#A8988B] mt-0.5 font-medium">
-                    1999 – 2026
-                  </span>
-                </div>
+              <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-[#2D2018] via-[#231812] to-[#150E0A] border-2 border-[#D4AF37]/70 shadow-2xl flex flex-col items-center justify-center text-center p-2 group hover:border-[#D4AF37] transition-colors">
+                <Award className="w-6 h-6 text-[#F5A020] mb-0.5" />
+                <span className="text-base sm:text-lg font-black text-white tracking-tight leading-none">
+                  २५+ वर्षे
+                </span>
+                <span className="text-[9px] sm:text-[10px] font-bold text-[#F5E6BE] uppercase tracking-wider mt-0.5">
+                  {locale === "mr" ? "ग्रंथ निष्ठा" : "Heritage"}
+                </span>
+                <span className="text-[8px] text-[#A8988B] mt-0.5 font-medium">
+                  1999 – 2026
+                </span>
               </div>
             </div>
           </div>
 
-          {/* 4 Grand Heritage Stat Pillars */}
+          {/* ── 4 Grand Heritage Stat Pillars ── */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {/* Stat 1 */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.06] border border-white/10 hover:border-[#F5A020]/40 transition-colors backdrop-blur-xs space-y-1.5">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#D4AF37]/50 transition-colors space-y-1.5">
               <div className="flex items-center gap-2">
                 <span className="p-1.5 rounded-lg bg-[#E8850A]/20 text-[#F5A020]">
                   <Calendar className="w-4 h-4" />
@@ -127,9 +112,9 @@ export function HeritagePavilion() {
             </div>
 
             {/* Stat 2 */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.06] border border-white/10 hover:border-[#F5A020]/40 transition-colors backdrop-blur-xs space-y-1.5">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#D4AF37]/50 transition-colors space-y-1.5">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-[#236B2B]/20 text-[#34853D]">
+                <span className="p-1.5 rounded-lg bg-[#236B2B]/25 text-[#48A853]">
                   <BookOpen className="w-4 h-4" />
                 </span>
                 <span className="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
@@ -147,7 +132,7 @@ export function HeritagePavilion() {
             </div>
 
             {/* Stat 3 */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.06] border border-white/10 hover:border-[#F5A020]/40 transition-colors backdrop-blur-xs space-y-1.5">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#D4AF37]/50 transition-colors space-y-1.5">
               <div className="flex items-center gap-2">
                 <span className="p-1.5 rounded-lg bg-[#E8850A]/20 text-[#F5A020]">
                   <MapPin className="w-4 h-4" />
@@ -167,9 +152,9 @@ export function HeritagePavilion() {
             </div>
 
             {/* Stat 4 */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.06] border border-white/10 hover:border-[#F5A020]/40 transition-colors backdrop-blur-xs space-y-1.5">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#D4AF37]/50 transition-colors space-y-1.5">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-[#236B2B]/20 text-[#34853D]">
+                <span className="p-1.5 rounded-lg bg-[#236B2B]/25 text-[#48A853]">
                   <ShieldCheck className="w-4 h-4" />
                 </span>
                 <span className="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
@@ -187,19 +172,8 @@ export function HeritagePavilion() {
             </div>
           </div>
 
-          {/* Founder's Archival Letter Card (The Heart of the Exhibition) */}
-          <div className="relative rounded-2xl bg-gradient-to-br from-[#FFFDF8] to-[#F5EFEB] text-[#1F1A16] p-6 sm:p-8 lg:p-10 shadow-xl border border-[#DED0BC]/80">
-            {/* Watermark Sprout */}
-            <div className="absolute right-6 bottom-6 opacity-5 pointer-events-none">
-              <Image
-                src="/images/logo.png"
-                alt="Watermark"
-                width={160}
-                height={50}
-                className="w-36 h-auto grayscale"
-              />
-            </div>
-
+          {/* ── Founder's Archival Letter Card (Literary Dignity) ── */}
+          <div className="relative rounded-2xl bg-[#FFFDF9] text-[#1F1A16] p-6 sm:p-8 lg:p-10 shadow-xl border border-[#DED0BC]">
             <div className="space-y-4 max-w-3xl">
               <div className="flex items-center gap-2 text-[#E8850A]">
                 <Quote className="w-6 h-6 rotate-180" />
@@ -214,7 +188,7 @@ export function HeritagePavilion() {
                   : "“Books are not merely bound paper; they are beacons that shape the human spirit. When we held our very first exhibition over two decades ago, our purpose was simple: to handpick books that leave an enduring mark. Today, that exact legacy extends into this online sanctuary.”"}
               </blockquote>
 
-              <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-[#DED0BC]/70">
+              <div className="pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-[#DED0BC]/70">
                 <div>
                   <h4 className="font-bold text-sm text-[#1F1A16]">
                     {locale === "mr" ? "साहित्ययात्रा ग्रंथदालन परिवार" : "SahityaYatra Exhibition Family"}
@@ -234,9 +208,9 @@ export function HeritagePavilion() {
             </div>
           </div>
 
-          {/* Exhibition Footprint Ribbon (Cities Across Maharashtra) */}
-          <div className="pt-2 space-y-3">
-            <p className="text-xs font-bold text-[#C5B4A5] uppercase tracking-wider flex items-center gap-1.5">
+          {/* ── Exhibition Footprint Ribbon (Cities Across Maharashtra) ── */}
+          <div className="pt-1 space-y-3">
+            <p className="text-xs font-bold text-[#D4AF37] uppercase tracking-wider flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-[#F5A020]" />
               <span>{locale === "mr" ? "प्रदर्शनांचे प्रमुख थांबे" : "Major Exhibition Locations"}</span>
             </p>
@@ -244,15 +218,16 @@ export function HeritagePavilion() {
               {exhibitionCities.map((city, idx) => (
                 <span
                   key={idx}
-                  className="px-3 py-1 rounded-full text-xs font-medium bg-white/10 hover:bg-white/20 border border-white/15 text-[#ECE3D4] transition-colors"
+                  className="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/[0.07] hover:bg-white/[0.12] border border-white/15 text-[#ECE3D4] transition-colors inline-flex items-center gap-1.5"
                 >
-                  📍 {locale === "mr" ? city.mr : city.en}
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F5A020]" aria-hidden="true" />
+                  <span>{locale === "mr" ? city.mr : city.en}</span>
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Action CTAs */}
+          {/* ── Action CTAs ── */}
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <Link href="/about">
               <Button

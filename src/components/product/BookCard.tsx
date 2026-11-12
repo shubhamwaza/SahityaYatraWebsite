@@ -2,12 +2,12 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import { Book } from "@/types";
-import { Badge } from "@/components/ui/Badge";
 import { useCart } from "@/context/CartContext";
 import { ShoppingBag, Check } from "lucide-react";
+import { toast } from "sonner";
 
 export interface BookCardProps {
   book: Book;
@@ -17,15 +17,29 @@ export interface BookCardProps {
 export function BookCard({ book, priority = false }: BookCardProps) {
   const t = useTranslations("product");
   const cartT = useTranslations("cart");
-  const { addItem } = useCart();
+  const locale = useLocale();
+  const { addItem, openCart } = useCart();
   const [added, setAdded] = useState(false);
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    addItem(book, 1, true);
+
+    addItem(book, 1, false);
     setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
+    setTimeout(() => setAdded(false), 1800);
+
+    // High-craft global toast feedback (Sonner)
+    toast.success(
+      locale === "mr" ? `"${book.title}" पिशवीत जोडले` : `Added "${book.title}" to bag`,
+      {
+        description: `₹${book.price} • ${book.author}`,
+        action: {
+          label: locale === "mr" ? "पिशवी पहा" : "View Bag",
+          onClick: () => openCart(),
+        },
+      }
+    );
   };
 
   const discountPercent =
@@ -40,17 +54,18 @@ export function BookCard({ book, priority = false }: BookCardProps) {
     book.handle.includes("yayati");
 
   return (
-    <div className="group relative flex flex-col bg-white rounded-2xl border border-[#DED0BC]/80 hover:border-[#E8850A]/70 shadow-[0_2px_8px_-1px_rgba(31,26,22,0.06)] hover:shadow-[0_16px_32px_-6px_rgba(31,26,22,0.15)] transition-[transform,box-shadow,border-color] duration-240 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden">
-      {/* Clickable Book Cover Presentation (Physical Book Depth & Sheen) */}
+    <article className="group relative flex flex-col bg-white rounded-2xl border border-[#DED0BC]/75 hover:border-[#E8850A]/70 shadow-[0_2px_8px_-1px_rgba(31,26,22,0.05)] hover:shadow-[0_16px_32px_-6px_rgba(31,26,22,0.14)] transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden">
+      {/* ── Clickable Book Cover Stage (Clean, Uncluttered Art) ── */}
       <Link
         href={`/products/${book.handle}`}
-        className="relative block p-4 sm:p-5 bg-gradient-to-b from-[#FAF7F2] to-[#F3EDE3]/70 cursor-pointer overflow-hidden"
+        className="relative block p-4 sm:p-5 bg-gradient-to-b from-[#FAF7F2] to-[#F3EDE3]/60 cursor-pointer overflow-hidden select-none"
+        aria-label={book.title}
       >
         <div className="book-stage relative w-full aspect-[2/3] flex items-center justify-center">
-          {/* Ambient Diffuse Glow behind book */}
+          {/* Subtle Warm Ambient Glow */}
           <div className="book-ambient-glow" />
 
-          {/* Physical 3D Book with Spine Crease & Paper Page Edges */}
+          {/* Physical 3D Book with Spine Crease & Cream Paper Page Edges */}
           <div className="book-spine-3d relative w-full h-full bg-[#EFE7D8]/90">
             <Image
               src={book.coverImage}
@@ -58,46 +73,50 @@ export function BookCard({ book, priority = false }: BookCardProps) {
               fill
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               priority={priority}
-              className="object-cover"
+              className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             />
 
-            {/* Emil Kowalski Specular Light Sheen */}
+            {/* Specular Soft Ambient Sheen */}
             <div className="book-sheen" />
 
-            {/* Top-Right Discount Badge */}
+            {/* Top-Right: Discreet Discount Pill */}
             {discountPercent && (
               <div className="absolute top-2 right-2 z-20">
-                <span className="bg-[#C62828] text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs tracking-tight">
+                <span className="bg-[#8B1E1E] text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs tracking-tight">
                   {discountPercent}% OFF
                 </span>
               </div>
             )}
 
-            {/* Top-Left Classic / Masterpiece Ribbon */}
+            {/* Top-Left: Subtle Classic Ribbon */}
             {isClassicMasterpiece && (
               <div className="absolute top-2 left-2 z-20">
-                <span className="inline-flex items-center gap-0.5 bg-[#1F1A16]/90 backdrop-blur-md text-[#F5A020] text-[9px] font-bold px-1.5 py-0.5 rounded-md border border-[#F5A020]/40 shadow-xs uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1 bg-[#1F1A16]/90 backdrop-blur-md text-[#F5A020] text-[9px] font-bold px-2 py-0.5 rounded-full border border-[#F5A020]/30 shadow-xs uppercase tracking-wider">
                   ★ {book.language === "marathi" ? "अभिजात" : "Classic"}
                 </span>
               </div>
             )}
           </div>
         </div>
-
-        {/* Bottom Language Badge (Overlay) */}
-        <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-20">
-          <Badge
-            variant={book.language === "marathi" ? "saffron" : "default"}
-            size="sm"
-            className="shadow-xs backdrop-blur-md bg-white/90 font-medium text-[11px]"
-          >
-            {book.language === "marathi" ? "मराठी" : "English"}
-          </Badge>
-        </div>
       </Link>
 
-      {/* Book Metadata & Actions */}
-      <div className="flex flex-col flex-1 p-3.5 sm:p-4 space-y-1.5">
+      {/* ── Book Metadata & Actions (Harmonious Typography) ── */}
+      <div className="flex flex-col flex-1 p-3.5 sm:p-4 space-y-1.5 bg-white">
+        {/* Genre & Language Cue (Clean, Quiet Metadata) */}
+        <div className="flex items-center gap-1.5 text-[11px] font-semibold tracking-wide uppercase">
+          <span className="text-[#8B1E1E]">
+            {book.language === "marathi" ? "मराठी साहित्य" : "English"}
+          </span>
+          {book.categories.length > 0 && (
+            <>
+              <span className="text-[#DED0BC]" aria-hidden="true">•</span>
+              <span className="text-[#7D6F63] font-normal truncate">
+                {book.categories[0]}
+              </span>
+            </>
+          )}
+        </div>
+
         {/* Title */}
         <Link href={`/products/${book.handle}`} className="block group/title">
           <h3
@@ -132,12 +151,12 @@ export function BookCard({ book, priority = false }: BookCardProps) {
             )}
           </div>
 
-          {/* Quick Add Button with Emil Kowalski press scale and confirmation */}
+          {/* Tactile Quick Add Button (active:scale-[0.97], Sonner Toast trigger) */}
           <button
             type="button"
             onClick={handleQuickAdd}
             disabled={!book.availableForSale}
-            className={`relative inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full cursor-pointer transition-all duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-90 focus-visible:ring-2 focus-visible:ring-[#E8850A] ${
+            className={`relative inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-full cursor-pointer transition-all duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8850A] focus-visible:ring-offset-1 ${
               added
                 ? "bg-[#236B2B] text-white shadow-xs font-semibold"
                 : "bg-[#F8F4EC] text-[#1F1A16] hover:bg-[#E8850A] hover:text-white shadow-2xs font-medium"
@@ -163,6 +182,6 @@ export function BookCard({ book, priority = false }: BookCardProps) {
           </button>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

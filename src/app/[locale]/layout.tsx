@@ -10,6 +10,7 @@ import { Footer } from "@/components/layout/Footer";
 import { CookieConsent } from "@/components/layout/CookieConsent";
 import { CartProvider } from "@/context/CartContext";
 import { CartDrawer } from "@/components/cart/CartDrawer";
+import { Toaster } from "sonner";
 import "@/app/globals.css";
 
 // ── Fonts ──────────────────────────────────────────────────────────────────
@@ -106,6 +107,21 @@ export default async function LocaleLayout({ children, params }: Props) {
             <Footer />
             <CartDrawer />
             <CookieConsent />
+            <Toaster
+              position="bottom-right"
+              toastOptions={{
+                style: {
+                  background: "#FFFDF9",
+                  color: "#1F1A16",
+                  border: "1px solid #DED0BC",
+                  boxShadow: "0 12px 32px -4px rgba(31, 26, 22, 0.14)",
+                  borderRadius: "14px",
+                  fontSize: "13px",
+                  fontFamily: locale === "mr" ? "var(--font-mukta)" : "var(--font-ibm-plex-sans)",
+                },
+                className: "sonner-toast-custom",
+              }}
+            />
           </CartProvider>
         </NextIntlClientProvider>
       </body>
