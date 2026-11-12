@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import { useCart } from "@/context/CartContext";
+import { toast } from "sonner";
 import {
   X,
   Plus,
@@ -21,6 +22,12 @@ import {
 export function CartDrawer() {
   const t = useTranslations("cart");
   const locale = useLocale();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const {
     items,
     isOpen,
@@ -73,8 +80,8 @@ export function CartDrawer() {
             <div>
               <h2 className="text-base sm:text-lg font-bold text-[#1F1A16] optical-title flex items-center gap-2">
                 <span>{locale === "mr" ? "तुमची झोळी" : "Your Basket"}</span>
-                {totalCount > 0 && (
-                  <span className="text-xs bg-[#E8850A] text-white font-extrabold px-2 py-0.5 rounded-full">
+                {mounted && totalCount > 0 && (
+                  <span className="text-xs bg-[#E8850A] text-white font-extrabold px-2 py-0.5 rounded-full tabular-nums shadow-2xs">
                     {totalCount}
                   </span>
                 )}
@@ -276,18 +283,23 @@ export function CartDrawer() {
               type="button"
               onClick={() => {
                 // When connected with Shopify Checkout, will redirect to cart.checkoutUrl
-                // For development, provide direct prompt or toast
-                alert(
+                toast.success(
                   locale === "mr"
-                    ? `साहित्ययात्रा: एकूण ₹${subtotal} ची ऑर्डर चेकआउटसाठी सज्ज आहे. (Shopify Payment Gateway द्वारे सुरक्षित व्यवहार)`
-                    : `SahityaYatra: Order of ₹${subtotal} is ready for checkout via Shopify Payment Gateway.`
+                    ? "ऑर्डर चेकआउटसाठी सज्ज आहे!"
+                    : "Ready for checkout!",
+                  {
+                    description:
+                      locale === "mr"
+                        ? `एकूण ₹${subtotal} • Shopify पेमेंट गेटवेद्वारे सुरक्षित व्यवहार`
+                        : `Total ₹${subtotal} • Redirecting to secure checkout`,
+                  }
                 );
               }}
-              className="w-full py-3.5 px-6 rounded-full bg-[#1F1A16] hover:bg-[#E8850A] text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-150 active:scale-[0.98] cursor-pointer"
+              className="w-full py-3.5 px-6 rounded-full bg-[#1F1A16] hover:bg-[#E8850A] text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-150 active:scale-[0.98] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8850A]"
             >
               <Lock className="w-4 h-4 text-[#F5A020]" />
               <span>{locale === "mr" ? "सुरक्षित चेकआउट करा" : "Proceed to Checkout"}</span>
-              <span className="ml-1 text-xs font-normal opacity-75">• ₹{subtotal}</span>
+              <span className="ml-1 text-xs font-normal opacity-75 tabular-nums">• ₹{subtotal}</span>
             </button>
 
             {/* Trust Badges Strip */}

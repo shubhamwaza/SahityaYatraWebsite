@@ -28,9 +28,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="inline-block active:scale-98 transition-transform group">
+            <Link href="/" className="inline-block active:scale-98 transition-transform group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A020] rounded-2xl">
               {/* Logo in warm literary badge for dark footer */}
-              <div className="bg-[#F8F4EC] px-5 py-2.5 rounded-2xl inline-flex items-center shadow-md border border-[#DED0BC]/30 group-hover:border-[#E8850A]/40 transition-colors">
+              <div className="bg-[#F8F4EC] px-5 py-2.5 rounded-2xl inline-flex items-center shadow-md border border-[#DED0BC]/50 group-hover:border-[#E8850A]/70 transition-colors">
                 <Image
                   src="/images/logo.png"
                   alt="SahityaYatra"
@@ -43,20 +43,31 @@ export function Footer() {
 
             <p className="text-xs sm:text-sm text-[#ECE3D4]/80 max-w-sm leading-relaxed">
               {locale === "mr"
-                ? "साहित्ययात्रा ही मराठी व इंग्रजी साहित्याची विश्वासू ग्रंथदालन आहे. प्रदर्शन व ऑनलाइन माध्यमांद्वारे आम्ही भारतभरातील वाचकांपर्यंत समृद्ध पुस्तके पोहोचवतो."
+                ? "साहित्ययात्रा ही मराठी व इंग्रजी साहित्याची विश्वासू ग्रंथदालन आहे. ग्रंथप्रदर्शन व ऑनलाइन दालनाद्वारे आम्ही भारतभरातील वाचकांपर्यंत समृद्ध पुस्तके पोहोचवतो."
                 : "SahityaYatra is a dedicated Marathi & English bookstore rooted in offline exhibitions, now bringing carefully curated literature to readers across India."}
             </p>
 
-            <div className="pt-2">
-              <a
-                href="https://www.facebook.com/SahityaYatraShop"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-semibold text-[#F5A020] hover:text-[#E8850A] transition-colors bg-[#2B231D]/80 hover:bg-[#3D322A] px-3.5 py-1.5 rounded-full border border-white/10 hover:border-[#F5A020]/40 shadow-xs"
-              >
-                <span>{t("followUs")}: Facebook.com/SahityaYatraShop</span>
-                <span aria-hidden="true">↗</span>
-              </a>
+            <div className="pt-1 flex flex-col gap-2">
+              <div className="inline-flex items-center gap-2 text-[11px] text-[#DED0BC]/75 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#F5A020]" />
+                <span>
+                  {locale === "mr"
+                    ? "२५ वर्षांची अखंड साहित्य सेवा • २५+ शहरे • ५०+ प्रदर्शने"
+                    : "25 Years of Literary Service • 25+ Cities • 50+ Exhibitions"}
+                </span>
+              </div>
+
+              <div>
+                <a
+                  href="https://www.facebook.com/SahityaYatraShop"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs font-semibold text-[#F5A020] hover:text-[#E8850A] transition-colors bg-[#2B231D]/80 hover:bg-[#3D322A] px-3.5 py-1.5 rounded-full border border-white/10 hover:border-[#F5A020]/40 shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A020]"
+                >
+                  <span>{t("followUs")}: Facebook.com/SahityaYatraShop</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             </div>
           </div>
 

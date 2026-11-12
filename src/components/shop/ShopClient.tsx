@@ -4,7 +4,7 @@ import React, { useState, useMemo } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Book } from "@/types";
 import { BookCard } from "@/components/product/BookCard";
-import { ArrowUpDown } from "lucide-react";
+import { ArrowUpDown, ChevronDown, RotateCcw, BookOpen } from "lucide-react";
 
 interface ShopClientProps {
   initialBooks: Book[];
@@ -60,16 +60,16 @@ export function ShopClient({ initialBooks }: ShopClientProps) {
   return (
     <div className="space-y-6">
       {/* Filter and Sort Toolbar */}
-      <div className="p-4 sm:p-5 rounded-2xl bg-white/90 backdrop-blur-md border border-[#DED0BC]/80 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm">
-        {/* Language Quick Tabs */}
-        <div className="flex items-center gap-2">
+      <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[#DED0BC]/80 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-[0_2px_8px_rgba(31,26,22,0.04)]">
+        {/* Language Segmented Tabs */}
+        <div className="flex items-center gap-1.5 flex-wrap" role="group" aria-label={filtersT("language")}>
           <span className="text-xs font-bold text-[#7D6F63] uppercase tracking-wider mr-1">
             {filtersT("language")}:
           </span>
           <button
             type="button"
             onClick={() => setSelectedLanguage("all")}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer active:scale-95 transition-all duration-150 ${
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8850A] ${
               selectedLanguage === "all"
                 ? "bg-[#1F1A16] text-white shadow-xs"
                 : "bg-[#F8F4EC] text-[#54483E] hover:bg-[#EFE7D8]"
@@ -80,7 +80,7 @@ export function ShopClient({ initialBooks }: ShopClientProps) {
           <button
             type="button"
             onClick={() => setSelectedLanguage("marathi")}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer active:scale-95 transition-all duration-150 ${
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8850A] ${
               selectedLanguage === "marathi"
                 ? "bg-[#E8850A] text-white shadow-xs font-devanagari font-bold"
                 : "bg-[#F8F4EC] text-[#54483E] hover:bg-[#EFE7D8]"
@@ -91,7 +91,7 @@ export function ShopClient({ initialBooks }: ShopClientProps) {
           <button
             type="button"
             onClick={() => setSelectedLanguage("english")}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer active:scale-95 transition-all duration-150 ${
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8850A] ${
               selectedLanguage === "english"
                 ? "bg-[#1F1A16] text-white shadow-xs font-bold"
                 : "bg-[#F8F4EC] text-[#54483E] hover:bg-[#EFE7D8]"
@@ -101,37 +101,40 @@ export function ShopClient({ initialBooks }: ShopClientProps) {
           </button>
         </div>
 
-        {/* Sort Select */}
+        {/* Sort Select with Custom Chevron Indicator */}
         <div className="flex items-center gap-2 shrink-0">
-          <ArrowUpDown className="w-4 h-4 text-[#7D6F63]" />
+          <ArrowUpDown className="w-3.5 h-3.5 text-[#7D6F63] shrink-0" />
           <label htmlFor="sort-books" className="text-xs font-bold text-[#7D6F63] uppercase tracking-wider">
             {filtersT("sortBy")}:
           </label>
-          <select
-            id="sort-books"
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-            className="text-xs sm:text-sm bg-[#FCFBF7] border border-[#DED0BC] rounded-xl px-3 py-1.5 text-[#1F1A16] font-medium focus:outline-none focus:ring-2 focus:ring-[#E8850A] cursor-pointer shadow-2xs"
-          >
-            <option value="default">{filtersT("sortNewest")}</option>
-            <option value="price-low">{filtersT("sortPriceLow")}</option>
-            <option value="price-high">{filtersT("sortPriceHigh")}</option>
-            <option value="title">{filtersT("sortTitle")}</option>
-          </select>
+          <div className="relative inline-flex items-center">
+            <select
+              id="sort-books"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
+              className="appearance-none text-xs sm:text-sm bg-[#FCFBF7] border border-[#DED0BC] hover:border-[#E8850A]/70 rounded-xl pl-3 pr-8 py-1.5 text-[#1F1A16] font-medium focus:outline-none focus:ring-2 focus:ring-[#E8850A] cursor-pointer shadow-2xs transition-colors"
+            >
+              <option value="default">{filtersT("sortNewest")}</option>
+              <option value="price-low">{filtersT("sortPriceLow")}</option>
+              <option value="price-high">{filtersT("sortPriceHigh")}</option>
+              <option value="title">{filtersT("sortTitle")}</option>
+            </select>
+            <ChevronDown className="w-3.5 h-3.5 text-[#7D6F63] absolute right-2.5 pointer-events-none" />
+          </div>
         </div>
       </div>
 
       {/* Category Pills Strip */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar scroll-smooth">
         {categories.map((cat) => (
           <button
             key={cat.id}
             type="button"
             onClick={() => setSelectedCategory(cat.id)}
-            className={`px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap cursor-pointer active:scale-95 transition-all duration-150 border ${
+            className={`px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap cursor-pointer active:scale-95 transition-all border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8850A] ${
               selectedCategory === cat.id
                 ? "bg-[#E8850A] text-white border-[#E8850A] shadow-xs"
-                : "bg-white/80 text-[#54483E] border-[#DED0BC] hover:border-[#E8850A] hover:bg-white"
+                : "bg-white text-[#54483E] border-[#DED0BC] hover:border-[#E8850A]/70 hover:bg-[#FAF7F2]"
             }`}
           >
             {cat.label}
@@ -141,7 +144,7 @@ export function ShopClient({ initialBooks }: ShopClientProps) {
 
       {/* Results Count & Active Filters Indicator */}
       <div className="flex items-center justify-between text-xs text-[#5C4E42] px-1">
-        <p>
+        <p className="font-medium">
           {locale === "mr"
             ? `${filteredBooks.length} पुस्तके उपलब्ध`
             : `Showing ${filteredBooks.length} books`}
@@ -154,9 +157,10 @@ export function ShopClient({ initialBooks }: ShopClientProps) {
               setSelectedLanguage("all");
               setSelectedCategory("all");
             }}
-            className="text-[#E8850A] font-semibold hover:underline"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF7F2] border border-[#DED0BC] text-[#E8850A] font-semibold hover:bg-[#F3EDE3] active:scale-95 transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-[#E8850A]"
           >
-            {filtersT("reset")}
+            <RotateCcw className="w-3 h-3" />
+            <span>{filtersT("reset")}</span>
           </button>
         )}
       </div>
@@ -169,28 +173,72 @@ export function ShopClient({ initialBooks }: ShopClientProps) {
           ))}
         </div>
       ) : (
-        /* Empty State */
-        <div className="p-12 text-center bg-white rounded-2xl border border-[#DED0BC] space-y-4">
-          <p className="text-base font-bold text-[#2E2620]">
-            {locale === "mr"
-              ? "या निकषांनुसार कोणतीही पुस्तके आढळली नाहीत"
-              : "No books match your selected filters"}
-          </p>
-          <p className="text-xs text-[#5C4E42] max-w-sm mx-auto">
-            {locale === "mr"
-              ? "कृपया वेगळी श्रेणी निवडून पाहा किंवा फिल्टर रीसेट करा."
-              : "Try switching languages or resetting your category filters."}
-          </p>
-          <button
-            type="button"
-            onClick={() => {
-              setSelectedLanguage("all");
-              setSelectedCategory("all");
-            }}
-            className="px-4 py-2 bg-[#E8850A] text-white text-xs font-bold rounded-full"
-          >
-            {filtersT("reset")}
-          </button>
+        /* Empty State with Curated Quick Recovery Options */
+        <div className="p-8 sm:p-12 text-center bg-[#FCFBF7] rounded-3xl border border-[#DED0BC]/80 space-y-4 max-w-lg mx-auto shadow-sm">
+          <div className="w-12 h-12 rounded-full bg-[#FFF4E5] text-[#E8850A] flex items-center justify-center mx-auto shadow-inner">
+            <BookOpen className="w-6 h-6 stroke-[1.75]" />
+          </div>
+
+          <div className="space-y-1">
+            <h3 className="text-base sm:text-lg font-bold text-[#2E2620]">
+              {locale === "mr"
+                ? "या निकषांनुसार कोणतीही पुस्तके आढळली नाहीत"
+                : "No books match your selected filters"}
+            </h3>
+            <p className="text-xs text-[#7D6F63] leading-relaxed">
+              {locale === "mr"
+                ? "वेगळी श्रेणी निवडून पाहा किंवा खालील लोकप्रिय विभागांमधील पुस्तके शोधा:"
+                : "Try exploring these popular literature categories instead:"}
+            </p>
+          </div>
+
+          {/* Quick Popular Category Pills for Fast Recovery */}
+          <div className="flex flex-wrap justify-center gap-2 pt-2">
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedLanguage("marathi");
+                setSelectedCategory("classics");
+              }}
+              className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-[#DED0BC] hover:border-[#E8850A] text-[#2E2620] hover:text-[#E8850A] active:scale-95 transition-all cursor-pointer"
+            >
+              {locale === "mr" ? "अभिजात मराठी (Classics)" : "Marathi Classics"}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedLanguage("marathi");
+                setSelectedCategory("fiction");
+              }}
+              className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-[#DED0BC] hover:border-[#E8850A] text-[#2E2620] hover:text-[#E8850A] active:scale-95 transition-all cursor-pointer"
+            >
+              {locale === "mr" ? "कादंबरी (Fiction)" : "Fiction"}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedLanguage("all");
+                setSelectedCategory("history");
+              }}
+              className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-[#DED0BC] hover:border-[#E8850A] text-[#2E2620] hover:text-[#E8850A] active:scale-95 transition-all cursor-pointer"
+            >
+              {locale === "mr" ? "इतिहास (History)" : "History"}
+            </button>
+          </div>
+
+          <div className="pt-2">
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedLanguage("all");
+                setSelectedCategory("all");
+              }}
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-[#E8850A] hover:bg-[#D47000] text-white text-xs font-bold rounded-full shadow-sm hover:shadow active:scale-95 transition-all cursor-pointer"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>{filtersT("reset")}</span>
+            </button>
+          </div>
         </div>
       )}
     </div>
