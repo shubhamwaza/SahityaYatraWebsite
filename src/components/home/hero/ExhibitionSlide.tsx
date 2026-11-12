@@ -130,14 +130,8 @@ export function ExhibitionSlide({ slide, locale }: Props) {
       {/* ── Right Column: Digital Commemorative Exhibition Pass Stub (5 cols) ── */}
       <div className="lg:col-span-5 flex justify-center lg:justify-end">
         <div className="relative group w-full max-w-[320px] sm:max-w-[340px]">
-          {/* Dynamic Colored Halo Aura */}
-          <div
-            className="absolute inset-0 rounded-3xl blur-3xl scale-110 pointer-events-none transition-all duration-700"
-            style={{ backgroundColor: slide.auraColor }}
-          />
-
           {/* The Physical Exhibition Ticket Card */}
-          <div className="relative rounded-2xl bg-[#FCFBF7] text-[#1F1A16] border border-[#DED0BC] shadow-[0_24px_50px_rgba(0,0,0,0.45)] overflow-hidden">
+          <div className="relative rounded-2xl bg-[#FCFBF7] text-[#1F1A16] border border-[#DED0BC] shadow-[0_20px_45px_rgba(0,0,0,0.5)] overflow-hidden">
             {/* Top Header Ribbon with Saffron Accent */}
             <div className="bg-[#1F1A16] text-[#F5E6BE] px-5 py-3.5 border-b border-[#DED0BC]/40 flex items-center justify-between">
               <div className="flex items-center gap-2">

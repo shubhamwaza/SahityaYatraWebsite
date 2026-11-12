@@ -101,12 +101,6 @@ export function FestivalSlide({ slide, locale }: Props) {
       {/* ── Right Column: The 3-Cover Overlapping Festive Cascade (5 cols) ── */}
       <div className="lg:col-span-5 flex justify-center lg:justify-end">
         <div className="relative group w-full max-w-[340px] sm:max-w-[380px] h-[340px] flex items-center justify-center">
-          {/* Ambient Warm Golden Aura */}
-          <div
-            className="absolute inset-0 rounded-full blur-3xl scale-125 pointer-events-none transition-all duration-700"
-            style={{ backgroundColor: slide.auraColor }}
-          />
-
           {/* Cover Fan Stack */}
           <div className="relative w-full h-full flex items-center justify-center">
             {/* Left Cover (Rotated -8 deg) */}

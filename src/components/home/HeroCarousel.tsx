@@ -14,7 +14,7 @@ import { BookSpotlightSlide } from "./hero/BookSpotlightSlide";
 import { FestivalSlide } from "./hero/FestivalSlide";
 import type { Locale } from "./hero/heroTypes";
 
-const SLIDE_DURATION_MS = 8500; // 8.5 seconds for comfortable reading
+const SLIDE_DURATION_MS = 8500;
 
 export function HeroCarousel() {
   const locale = useLocale() as Locale;
@@ -45,36 +45,24 @@ export function HeroCarousel() {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-[#15100D] text-white"
+      className="relative w-full overflow-hidden bg-[#16110D] text-white"
       aria-roledescription="carousel"
       aria-label={t("heroTitle")}
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
     >
-      {/* 1. Dynamic Background Atmosphere matching Active Slide */}
+      {/* ── Rich Atmospheric Canvas (Dignified Warm Vignette) ── */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${activeSlide.theme} transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]`}
-      />
-
-      {/* 2. Apple Keynote Ambient Halos */}
-      <div
-        className={`absolute -right-20 -top-20 w-[450px] sm:w-[650px] h-[450px] sm:h-[650px] rounded-full ${activeSlide.accentGlow} blur-[120px] transition-all duration-700 pointer-events-none`}
-        aria-hidden="true"
+        className={`absolute inset-0 bg-gradient-to-br ${activeSlide.theme} opacity-90 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]`}
       />
       <div
-        className="absolute -left-20 -bottom-20 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#E8850A]/15 blur-3xl pointer-events-none"
+        className="absolute inset-0 bg-gradient-to-t from-[#16110D] via-transparent to-black/25 pointer-events-none"
         aria-hidden="true"
       />
 
-      {/* 3. Subtle Archival Dot Grid Pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.035] bg-[radial-gradient(#FFFFFF_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
-        aria-hidden="true"
-      />
-
-      <div className="container-site relative z-10 py-10 sm:py-16 lg:py-20">
+      <div className="container-site relative z-10 py-10 sm:py-14 lg:py-18">
         {/* ── Active Template Slide Render ── */}
-        <div className="transition-opacity duration-500 ease-out">
+        <div className="transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
           {activeSlide.type === "exhibition" && (
             <ExhibitionSlide slide={activeSlide} locale={locale} />
           )}
@@ -88,9 +76,9 @@ export function HeroCarousel() {
           )}
         </div>
 
-        {/* ── Carousel Bottom Controls & Labeled Category Capsules ── */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-8 sm:pt-10 border-t border-white/15 mt-8">
-          {/* Labeled Pill Capsules (Direct Jump to Categories) */}
+        {/* ── Carousel Bottom Controls (Refined Segmented Indicators) ── */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-8 border-t border-white/10 mt-8">
+          {/* Segmented Slide Navigation Pills */}
           <div className="flex flex-wrap items-center gap-2">
             {slides.map((slide, idx) => {
               const isActive = currentSlide === idx;
@@ -99,29 +87,26 @@ export function HeroCarousel() {
                   key={slide.id}
                   type="button"
                   onClick={() => setCurrentSlide(idx)}
-                  className={`group relative flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer ${
+                  className={`group relative flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? "bg-[#E8850A] text-white shadow-md ring-2 ring-[#E8850A]/40"
-                      : "bg-white/10 hover:bg-white/20 text-[#ECE3D4] border border-white/10"
+                      ? "bg-[#E8850A] text-white shadow-sm ring-1 ring-[#E8850A]"
+                      : "bg-white/[0.07] hover:bg-white/[0.14] text-[#ECE3D4] border border-white/10"
                   }`}
                   aria-label={`Slide ${idx + 1}: ${slide.navPill[locale]}`}
                   aria-current={isActive ? "true" : "false"}
                 >
                   <span>{slide.navPill[locale]}</span>
-                  {isActive && isPlaying && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                  )}
                 </button>
               );
             })}
           </div>
 
-          {/* Controls: Prev, Next & Pause */}
-          <div className="flex items-center gap-2 self-end sm:self-auto">
+          {/* Precision Controls: Prev, Next & Pause */}
+          <div className="flex items-center gap-1.5 self-end sm:self-auto bg-white/[0.06] p-1 rounded-full border border-white/10 backdrop-blur-xs">
             <button
               type="button"
               onClick={() => setIsPlaying((p) => !p)}
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 active:scale-90 text-white transition-all cursor-pointer"
+              className="p-1.5 rounded-full hover:bg-white/15 active:scale-90 text-white/80 hover:text-white transition-all cursor-pointer"
               aria-label={isPlaying ? "Pause auto-rotation" : "Play auto-rotation"}
             >
               {isPlaying ? (
@@ -131,10 +116,12 @@ export function HeroCarousel() {
               )}
             </button>
 
+            <div className="w-px h-3.5 bg-white/15" aria-hidden="true" />
+
             <button
               type="button"
               onClick={prevSlide}
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 active:scale-90 text-white transition-all cursor-pointer"
+              className="p-1.5 rounded-full hover:bg-white/15 active:scale-90 text-white/80 hover:text-white transition-all cursor-pointer"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -143,7 +130,7 @@ export function HeroCarousel() {
             <button
               type="button"
               onClick={nextSlide}
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 active:scale-90 text-white transition-all cursor-pointer"
+              className="p-1.5 rounded-full hover:bg-white/15 active:scale-90 text-white/80 hover:text-white transition-all cursor-pointer"
               aria-label="Next slide"
             >
               <ChevronRight className="w-4 h-4" />

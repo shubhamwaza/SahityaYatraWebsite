@@ -26,17 +26,23 @@ export function BookSpotlightSlide({ slide, locale }: Props) {
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center min-h-[460px] lg:min-h-[500px]">
       {/* ── Left Column: Narrative & Literary Accolades (7 cols) ── */}
       <div className="lg:col-span-7 space-y-5 sm:space-y-6">
-        {/* Badges Row */}
-        <div className="flex flex-wrap items-center gap-2">
+        {/* Badges Row: Clear, Dignified Accolades */}
+        <div className="flex flex-wrap items-center gap-2.5">
           <Badge variant="saffron" size="md" className="shadow-xs backdrop-blur-md">
             <Sparkles className="w-3.5 h-3.5 mr-1" />
             <span>{slide.badgeText[locale]}</span>
           </Badge>
 
-          {/* Metallic Gold Foil Accolade Pill */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#D4AF37]/20 via-[#F3E5AB]/25 to-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#F5E6BE] text-xs font-semibold backdrop-blur-md shadow-xs">
-            <Star className="w-3 h-3 text-[#F5A020] fill-[#F5A020]" />
+          {/* Literary Masterpiece Honor Tag */}
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.08] border border-[#D4AF37]/40 text-[#F5E6BE] text-xs font-semibold backdrop-blur-md shadow-xs">
+            <Award className="w-3.5 h-3.5 text-[#F5A020]" />
             <span>{slide.accolade[locale]}</span>
+          </div>
+
+          {/* Curator's Choice Pill */}
+          <div className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 text-[#ECE3D4] text-[11px] font-medium border border-white/15">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#34853D]" aria-hidden="true" />
+            <span>{isMr ? "संपादकीय शिफारस" : "Curator's Choice"}</span>
           </div>
         </div>
 
@@ -54,13 +60,13 @@ export function BookSpotlightSlide({ slide, locale }: Props) {
           {slide.subtitle[locale]}
         </p>
 
-        {/* Literary Excerpt Quote Card */}
-        <div className="relative pl-4 py-2 border-l-2 border-[#E8850A]/70 bg-white/5 rounded-r-xl max-w-xl backdrop-blur-xs">
-          <Quote className="w-4 h-4 text-[#F5A020] mb-1 opacity-70" />
+        {/* Literary Excerpt Quote Card (Refined Parchment Style) */}
+        <div className="relative pl-4 py-2.5 border-l-2 border-[#E8850A] bg-white/[0.04] rounded-r-xl max-w-xl backdrop-blur-xs">
+          <Quote className="w-4 h-4 text-[#F5A020] mb-1 opacity-80" />
           <p className="text-xs sm:text-sm text-[#F0E6D8] italic leading-relaxed font-serif">
             {slide.quote[locale]}
           </p>
-          <span className="block text-[11px] text-[#C5B4A5] font-sans font-medium mt-1">
+          <span className="block text-[11px] text-[#C5B4A5] font-sans font-medium mt-1.5">
             {slide.bookMeta[locale]}
           </span>
         </div>
@@ -78,7 +84,7 @@ export function BookSpotlightSlide({ slide, locale }: Props) {
             <Button
               variant="outline"
               size="lg"
-              className="text-white border-white/30 bg-white/10 hover:bg-white/20 backdrop-blur-sm"
+              className="text-white border-white/30 bg-white/10 hover:bg-white/20 backdrop-blur-xs font-medium"
             >
               <span>{slide.ctaSecondary.label[locale]}</span>
             </Button>
@@ -86,18 +92,12 @@ export function BookSpotlightSlide({ slide, locale }: Props) {
         </div>
       </div>
 
-      {/* ── Right Column: Physical 3D Book Feature with Ambient Aura (5 cols) ── */}
+      {/* ── Right Column: Clean 3D Physical Book Feature (5 cols) ── */}
       <div className="lg:col-span-5 flex justify-center lg:justify-end">
         <div className="relative group book-stage">
-          {/* Dynamic Colored Halo Bleed (Matching Book Cover) */}
-          <div
-            className="absolute inset-0 rounded-full blur-3xl scale-125 transition-all duration-700 pointer-events-none"
-            style={{ backgroundColor: slide.auraColor }}
-          />
-
-          {/* Physical 3D Book Showcase */}
-          <Link href={slide.ctaPrimary.href} className="block cursor-pointer">
-            <div className="book-spine-3d relative w-56 sm:w-64 aspect-[2/3] shadow-[0_28px_60px_rgba(0,0,0,0.7),-10px_0_20px_rgba(0,0,0,0.45)] border border-white/20">
+          {/* Physical 3D Book Showcase (Unobstructed Cover Art) */}
+          <Link href={slide.ctaPrimary.href} className="block cursor-pointer select-none">
+            <div className="book-spine-3d relative w-56 sm:w-64 aspect-[2/3] shadow-[0_24px_50px_rgba(0,0,0,0.6),-8px_0_16px_rgba(0,0,0,0.35)] border border-white/15">
               <div className="relative w-full h-full">
                 <Image
                   src={slide.coverImage}
@@ -105,26 +105,14 @@ export function BookSpotlightSlide({ slide, locale }: Props) {
                   fill
                   priority
                   sizes="(max-width: 640px) 224px, 256px"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                 />
 
-                {/* Emil Kowalski Specular Light Sheen */}
+                {/* Soft Ambient Book Surface Sheen */}
                 <div className="book-sheen" />
               </div>
             </div>
           </Link>
-
-          {/* Floating Curator Pill with Pulsing Sprout Dot */}
-          <div className="absolute -bottom-3 -right-3 sm:-right-4 bg-white/95 backdrop-blur-md border border-[#DED0BC] px-3.5 py-1.5 rounded-full shadow-lg text-[11px] font-bold text-[#1F1A16] flex items-center gap-1.5 z-20">
-            <span className="w-2 h-2 rounded-full bg-[#236B2B] animate-pulse" />
-            <span>{isMr ? "संपादकीय शिफारस" : "Curator's Choice"}</span>
-          </div>
-
-          {/* Award Seal Ribbon */}
-          <div className="absolute -top-3 -left-3 sm:-left-4 bg-[#1F1A16]/90 backdrop-blur-md border border-[#D4AF37]/50 text-[#F5A020] px-3 py-1 rounded-full shadow-md text-[10px] font-bold flex items-center gap-1 z-20">
-            <Award className="w-3.5 h-3.5 text-[#F5A020]" />
-            <span>{isMr ? "अभिजात ग्रंथ" : "Masterpiece"}</span>
-          </div>
         </div>
       </div>
     </div>
