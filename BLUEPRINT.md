@@ -70,6 +70,8 @@ When assisting on this project, invoke these specialized skills:
 | **UI Polish & Quality** | `impeccable` | Run for design reviews, high-craft components, and layout refinements |
 | **Anti-Slop Greenfield** | `hallmark` | Run when building new landing pages, heroes, or marketing sections |
 | **Library Choices** | `pick-ui-library` | Run before adding dependencies (pick Sonner, Virtuoso, base-ui) |
+| **Motion & Micro-interactions** | `transitions-dev` | Drop-in accessible CSS transitions (dropdowns, modals, tabs, toasts, badges) |
+| **Vercel UI Guidelines** | `web-design-guidelines` | Audit code against Vercel's Web Interface Guidelines (a11y, UX microcopy) |
 | **Accessibility Audit** | `better-accessibility` | Run to verify WCAG AA compliance and screen reader support |
 | **Design Polish** | `better-ui` / `better-typography` | Fine-tune spacing, radius, optical alignment, and measure |
 | **Pre-Flight Gate** | `preflight-check` | **Mandatory gate before finishing any task or committing** |
