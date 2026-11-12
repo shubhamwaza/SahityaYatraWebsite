@@ -2,7 +2,7 @@ import React from "react";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import { Link } from "@/lib/i18n/navigation";
-import { HeroCarousel } from "@/components/home/HeroCarousel";
+import { HeroBento } from "@/components/home/HeroBento";
 import { CategoryStrip } from "@/components/home/CategoryStrip";
 import { HeritagePavilion } from "@/components/home/HeritagePavilion";
 import { BookCard } from "@/components/product/BookCard";
@@ -48,8 +48,8 @@ export default async function HomePage({ params }: Props) {
 
   return (
     <div className="space-y-16 sm:space-y-24 pb-24">
-      {/* 1. Campaign Hero Showcase */}
-      <HeroCarousel />
+      {/* 1. Bento Hero Showcase (Exhibition & Bookstore Gateway) */}
+      <HeroBento />
 
       {/* 2. Category Quick-Browse Strip (Apple Segmented Pills) */}
       <CategoryStrip />
