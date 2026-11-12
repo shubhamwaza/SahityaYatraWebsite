@@ -41,7 +41,7 @@ export default async function HomePage({ params }: Props) {
     allBooks.slice(4, 8).length > 0 ? allBooks.slice(4, 8) : allBooks.slice(0, 4);
   const marathiHighlights = allBooks
     .filter((b) => b.language === "marathi")
-    .slice(0, 4);
+    .slice(0, 8);
   const englishHighlights = allBooks
     .filter((b) => b.language === "english")
     .slice(0, 4);

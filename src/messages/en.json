@@ -103,6 +103,12 @@
     "title": "Contact Us",
     "name": "Your Name",
     "email": "Email Address",
+    "topic": "Purpose of Inquiry",
+    "topicGeneral": "General Inquiry",
+    "topicOrder": "Order & Delivery Support",
+    "topicRareBook": "Rare Book Request",
+    "topicDataPrivacy": "Data Deletion / Privacy Request (DPDP Act)",
+    "consentLabel": "I agree to the processing of my contact information in accordance with the Privacy Policy for the purpose of responding to this request.",
     "message": "Message",
     "send": "Send Message",
     "success": "Thank you! We'll get back to you soon.",
@@ -112,13 +118,25 @@
     "privacy": "Privacy Policy",
     "shipping": "Shipping & Delivery",
     "returns": "Returns & Refunds",
-    "terms": "Terms & Conditions"
+    "terms": "Terms & Conditions",
+    "cookies": "Cookie Policy"
+  },
+  "cookieConsent": {
+    "title": "We Respect Your Privacy",
+    "description": "We use essential cookies to maintain your shopping cart, language preference, and secure checkout. We do not use third-party tracking pixels or sell your data.",
+    "acceptAll": "Accept All",
+    "essentialOnly": "Essential Only",
+    "cookiePolicy": "Cookie Policy",
+    "cookiePreferences": "Cookie Preferences"
   },
   "footer": {
     "tagline": "Your literary journey",
     "followUs": "Follow Us",
     "allRightsReserved": "All rights reserved",
-    "madeWith": "Made with ♥ for book lovers"
+    "madeWith": "Made with ♥ for book lovers",
+    "cookiePreferences": "Cookie Preferences",
+    "grievanceOfficer": "Grievance Officer: grievance@sahityayatra.com",
+    "businessDetails": "SahityaYatra Books & Exhibitions • Sadashiv Peth, Pune, Maharashtra 411030"
   },
   "errors": {
     "notFound": "Page Not Found",

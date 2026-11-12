@@ -11,7 +11,6 @@ import {
   Quote,
   Award,
   ArrowRight,
-  BookOpen,
 } from "lucide-react";
 import type { BookSpotlightSlideData, Locale } from "./heroTypes";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, useRouter } from "@/lib/i18n/navigation";
@@ -15,6 +15,11 @@ export function Header() {
   const locale = useLocale();
   const router = useRouter();
   const { totalCount, openCart } = useCart();
+  const isMounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
   const [searchQuery, setSearchQuery] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -173,7 +178,7 @@ export function Header() {
               aria-label={t("cart")}
             >
               <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
-              {totalCount > 0 && (
+              {isMounted && totalCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-[#E8850A] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">
                   {totalCount}
                 </span>

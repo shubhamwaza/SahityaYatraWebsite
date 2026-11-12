@@ -7,6 +7,7 @@ import { routing } from "@/lib/i18n/routing";
 import type { Locale } from "@/types";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { CookieConsent } from "@/components/layout/CookieConsent";
 import { CartProvider } from "@/context/CartContext";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import "@/app/globals.css";
@@ -88,14 +89,23 @@ export default async function LocaleLayout({ children, params }: Props) {
         />
       </head>
       <body className="min-h-screen flex flex-col bg-[#F8F4EC] text-[#2E2620]">
+        {/* Skip to Main Content link for keyboard & screen reader accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-[#E8850A] focus:text-white focus:rounded-xl focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#1F1A16] font-bold text-xs tracking-wide"
+        >
+          {locale === "mr" ? "मुख्य मजकुरावर जा (Skip to Content)" : "Skip to main content"}
+        </a>
+
         <NextIntlClientProvider messages={messages} locale={locale}>
           <CartProvider>
             <Header />
-            <div className="flex-1">
+            <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
               {children}
-            </div>
+            </main>
             <Footer />
             <CartDrawer />
+            <CookieConsent />
           </CartProvider>
         </NextIntlClientProvider>
       </body>

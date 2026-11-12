@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
+import { ShieldCheck, Mail, MapPin } from "lucide-react";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -11,6 +14,12 @@ export function Footer() {
   const locale = useLocale();
 
   const currentYear = new Date().getFullYear();
+
+  const handleOpenCookiePreferences = () => {
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new Event("open-cookie-preferences"));
+    }
+  };
 
   return (
     <footer className="bg-[#16120F] text-[#ECE3D4] border-t border-[#2B231D] mt-auto">
@@ -195,7 +204,69 @@ export function Footer() {
                   {policiesT("terms")}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/policies/cookies"
+                  className="hover:text-white transition-colors"
+                >
+                  {policiesT("cookies")}
+                </Link>
+              </li>
+              <li className="pt-1">
+                <button
+                  type="button"
+                  onClick={handleOpenCookiePreferences}
+                  className="text-xs text-[#F5A020] hover:text-[#E8850A] transition-colors underline underline-offset-4 text-left"
+                >
+                  ⚙ {t("cookiePreferences")}
+                </button>
+              </li>
             </ul>
+          </div>
+        </div>
+
+        {/* Legal & Regulatory Compliance Strip */}
+        <div className="mt-12 pt-6 border-t border-[#2B231D] grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-[#DED0BC]/75">
+          <div className="flex items-start gap-2">
+            <MapPin className="w-4 h-4 text-[#F5A020] shrink-0 mt-0.5" />
+            <div>
+              <p className="font-semibold text-white">
+                {locale === "mr" ? "नोंदणीकृत कार्यालय" : "Registered Business Office"}
+              </p>
+              <p className="text-[11px] text-[#DED0BC]/70">{t("businessDetails")}</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-2">
+            <Mail className="w-4 h-4 text-[#F5A020] shrink-0 mt-0.5" />
+            <div>
+              <p className="font-semibold text-white">
+                {locale === "mr" ? "तक्रार निवारण अधिकारी" : "Grievance Redressal (IT Rules)"}
+              </p>
+              <a
+                href="mailto:grievance@sahityayatra.com"
+                className="text-[11px] text-[#F5A020] hover:underline"
+              >
+                grievance@sahityayatra.com
+              </a>
+              <p className="text-[10px] text-[#DED0BC]/60">
+                {locale === "mr" ? "प्रतिसाद कालावधी: ४८ तास" : "Response window: 48 hours"}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-2">
+            <ShieldCheck className="w-4 h-4 text-[#4CAF50] shrink-0 mt-0.5" />
+            <div>
+              <p className="font-semibold text-white">
+                {locale === "mr" ? "कायदेशीर व ग्राहक संरक्षण" : "Consumer & Data Protection"}
+              </p>
+              <p className="text-[11px] text-[#DED0BC]/70">
+                {locale === "mr"
+                  ? "DPDP कायदा २०२३ आणि ग्राहक संरक्षण ई-कॉमर्स नियम २०२० चे १००% पालन."
+                  : "Fully compliant with DPDP Act 2023 & Consumer Protection E-Commerce Rules 2020."}
+              </p>
+            </div>
           </div>
         </div>
       </div>

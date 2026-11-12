@@ -60,6 +60,70 @@ const booksToDownload = [
     id: "train-to-pakistan",
     url: "https://covers.openlibrary.org/b/id/568646-L.jpg",
   },
+  {
+    id: "shriman-yogi",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/32798fbdd8934956b977da6c061c17fb.jpg",
+  },
+  {
+    id: "swami",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/562a597f3bbe4bb2a8480a9b4f8ff0b6.jpg",
+  },
+  {
+    id: "partner",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/b845b038d5024e1fa446cbe9f0c8a9cc.jpg",
+  },
+  {
+    id: "kosala",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/62a52648ca1e4a30b2110e80dde3095f.jpg",
+  },
+  {
+    id: "baluta",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/ae8a3eae44a940be8d5b4e0f298da6fe.jpg",
+  },
+  {
+    id: "natsamrat",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/f501f4f59cda41d29f53282ad1c96065.jpg",
+  },
+  {
+    id: "kimayagar",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/174c02f6ccab4ba4ba4ad54c579ff7f0.jpg",
+  },
+  {
+    id: "radheya",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/3a915a1c01b147c796a61a166791bc9c.jpg",
+  },
+  {
+    id: "zadazadati",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/1a55df5b7d0a4f6388750ed98b07a7c7.jpg",
+  },
+  {
+    id: "vapurza",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/ef73162bc45145bc8374e51c4e8e6dd0.jpg",
+  },
+  {
+    id: "raja-shivchhatrapati",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/d5d9a59d2fcd4b48ba53a54fd22bc6f9.jpg",
+  },
+  {
+    id: "uchalya",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/53cffb20974f4fff9ee5e9c7876affe5.jpg",
+  },
+  {
+    id: "aajichya-potaditil-goshti",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/96fcf8e85ad94118a7e026fbd897b3d2.jpg",
+  },
+  {
+    id: "mahanayak",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/eabc1f796b6e428381c103b7f5864050.jpg",
+  },
+  {
+    id: "yugandhar",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/95a2d566d59948739f9d1ebd101e0ee8.jpg",
+  },
+  {
+    id: "amrutvel",
+    url: "https://www.bookganga.com/eBooks/Content/images/books/bce5a221eef745f580d2d43b48d8c33c.jpg",
+  },
 ];
 
 async function downloadAll() {

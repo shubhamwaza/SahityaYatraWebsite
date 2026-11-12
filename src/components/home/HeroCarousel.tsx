@@ -12,7 +12,6 @@ import { heroSlidesData } from "./hero/heroData";
 import { ExhibitionSlide } from "./hero/ExhibitionSlide";
 import { BookSpotlightSlide } from "./hero/BookSpotlightSlide";
 import { FestivalSlide } from "./hero/FestivalSlide";
-import { DispatchSlide } from "./hero/DispatchSlide";
 import type { Locale } from "./hero/heroTypes";
 
 const SLIDE_DURATION_MS = 8500; // 8.5 seconds for comfortable reading
@@ -86,10 +85,6 @@ export function HeroCarousel() {
 
           {activeSlide.type === "festival" && (
             <FestivalSlide slide={activeSlide} locale={locale} />
-          )}
-
-          {activeSlide.type === "dispatch" && (
-            <DispatchSlide slide={activeSlide} locale={locale} />
           )}
         </div>
 
