@@ -254,7 +254,7 @@ export function HeroBento() {
         {/* ══════════════════════════════════════════════════════════════════ */}
         {/* RIGHT COLUMN (5 cols): Card 2 (Exhibition) + Card 3 (Spotlight)    */}
         {/* ══════════════════════════════════════════════════════════════════ */}
-        <div className="lg:col-span-5 flex flex-col gap-5 sm:gap-6 justify-between">
+        <div className="lg:col-span-5 flex flex-col gap-5 sm:gap-6">
           {/* ────────────────────────────────────────────────────────────── */}
           {/* CARD 2: Live Pune Exhibition Ticket Pass                        */}
           {/* ────────────────────────────────────────────────────────────── */}
