@@ -210,7 +210,7 @@ export function HeroBento() {
             </div>
 
             {/* Curated Mini-Covers Preview */}
-            <div className="grid grid-cols-4 gap-3 sm:gap-4">
+            <div className="grid grid-cols-4 gap-2 sm:gap-4 overflow-hidden">
               {SAMPLE_BOOKS.slice(0, 4).map((book) => (
                 <Link
                   key={book.id}
@@ -258,7 +258,7 @@ export function HeroBento() {
           {/* ────────────────────────────────────────────────────────────── */}
           {/* CARD 2: Live Pune Exhibition Ticket Pass                        */}
           {/* ────────────────────────────────────────────────────────────── */}
-          <div className="rounded-[28px] bg-[#1C1510] text-[#ECE3D4] border border-[#3D2E24] p-5 sm:p-6 shadow-[0_4px_20px_-4px_rgba(28,21,16,0.25)] relative overflow-hidden flex flex-col justify-between group">
+          <div className="rounded-[28px] bg-[#1C1510] text-[#ECE3D4] border border-[#3D2E24] p-4 sm:p-6 shadow-[0_4px_20px_-4px_rgba(28,21,16,0.25)] relative overflow-hidden flex flex-col justify-between group">
             {/* Ambient Background Warmth */}
             <div
               className="absolute -right-10 -bottom-10 w-48 h-48 bg-[#E8850A]/10 rounded-full blur-2xl pointer-events-none"
@@ -289,10 +289,10 @@ export function HeroBento() {
               </h2>
 
               {/* Perforated Ticket Divider with Edge Notches */}
-              <div className="relative my-3.5">
+              <div className="relative my-3">
                 <div className="border-t border-dashed border-white/15 w-full" />
-                <div className="absolute -left-7 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#FAF7F2] border-r border-[#3D2E24]" />
-                <div className="absolute -right-7 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#FAF7F2] border-l border-[#3D2E24]" />
+                <div className="absolute -left-5 sm:-left-7 top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-[#FAF7F2] border-r border-[#3D2E24]" />
+                <div className="absolute -right-5 sm:-right-7 top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-[#FAF7F2] border-l border-[#3D2E24]" />
               </div>
 
               {/* Venue & Time Details */}
@@ -339,7 +339,7 @@ export function HeroBento() {
                 href="https://maps.google.com/?q=Tilak+Smarak+Mandir+Pune"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 py-2 px-4 rounded-full bg-[#E8850A] hover:bg-[#D47000] text-white text-xs font-bold shadow-sm hover:shadow active:scale-[0.96] transition-transform duration-150 ease-out cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A020]"
+                className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 min-h-[42px] rounded-full bg-[#E8850A] hover:bg-[#D47000] text-white text-xs font-bold shadow-sm hover:shadow active:scale-[0.96] transition-transform duration-150 ease-out cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A020]"
               >
                 <span>
                   {locale === "mr" ? "स्थळ व दिशा (Google Maps)" : "Venue & Directions"}
@@ -355,7 +355,7 @@ export function HeroBento() {
           <div
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            className="flex-1 rounded-[28px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF6EF] to-[#F5EFE6] border border-[#DED0BC]/85 p-5 sm:p-6 shadow-[0_4px_24px_-4px_rgba(31,26,22,0.06)] flex flex-col justify-between relative overflow-hidden group hover:border-[#E8850A]/60 transition-[border-color,box-shadow] duration-200"
+            className="flex-1 rounded-[28px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF6EF] to-[#F5EFE6] border border-[#DED0BC]/85 p-4 sm:p-6 shadow-[0_4px_24px_-4px_rgba(31,26,22,0.06)] flex flex-col justify-between relative overflow-hidden group hover:border-[#E8850A]/60 transition-[border-color,box-shadow] duration-200"
           >
             {/* Ambient Background Warmth */}
             <div
@@ -364,9 +364,9 @@ export function HeroBento() {
             />
 
             {/* Header: Rotating Badge & Progress Navigation */}
-            <div className="flex items-center justify-between gap-3 relative z-10 pb-3 border-b border-[#DED0BC]/50">
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#E8850A]/12 text-[#C66A00] border border-[#E8850A]/25 shadow-2xs">
+            <div className="flex items-center justify-between gap-2 relative z-10 pb-2.5 sm:pb-3 border-b border-[#DED0BC]/50">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#E8850A]/12 text-[#C66A00] border border-[#E8850A]/25 shadow-2xs shrink-0">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#E8850A] animate-pulse" />
                   {locale === "mr" ? activeMeta.badgeMr : activeMeta.badgeEn}
                 </span>
@@ -376,11 +376,11 @@ export function HeroBento() {
               </div>
 
               {/* Progress Indicators & Micro Controls */}
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1 shrink-0">
                 <button
                   type="button"
                   onClick={handlePrev}
-                  className="w-6 h-6 rounded-full flex items-center justify-center bg-[#FAF6EF] hover:bg-[#EFE7D8] text-[#5C4E42] border border-[#DED0BC] active:scale-[0.96] transition-transform duration-150 ease-out cursor-pointer"
+                  className="w-7 h-7 sm:w-8 sm:h-8 min-w-[28px] min-h-[28px] rounded-full flex items-center justify-center bg-[#FAF6EF] hover:bg-[#EFE7D8] text-[#5C4E42] border border-[#DED0BC] active:scale-[0.96] transition-transform duration-150 ease-out cursor-pointer"
                   aria-label="Previous book"
                 >
                   <ChevronLeft className="w-3.5 h-3.5" />
@@ -406,7 +406,7 @@ export function HeroBento() {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="w-6 h-6 rounded-full flex items-center justify-center bg-[#FAF6EF] hover:bg-[#EFE7D8] text-[#5C4E42] border border-[#DED0BC] active:scale-[0.96] transition-transform duration-150 ease-out cursor-pointer"
+                  className="w-7 h-7 sm:w-8 sm:h-8 min-w-[28px] min-h-[28px] rounded-full flex items-center justify-center bg-[#FAF6EF] hover:bg-[#EFE7D8] text-[#5C4E42] border border-[#DED0BC] active:scale-[0.96] transition-transform duration-150 ease-out cursor-pointer"
                   aria-label="Next book"
                 >
                   <ChevronRight className="w-3.5 h-3.5" />
@@ -415,18 +415,18 @@ export function HeroBento() {
             </div>
 
             {/* Center Showcase: Prominent 3D Book & Editorial Typography */}
-            <div className="my-auto py-4 flex flex-row items-center gap-5 sm:gap-6 relative z-10">
+            <div className="my-auto py-3 sm:py-4 flex flex-row items-center gap-3.5 sm:gap-6 relative z-10">
               {/* Grand 3D Physical Book Cover */}
               <Link
                 href={`/products/${activeBook.handle}`}
-                className="relative w-28 sm:w-32 lg:w-36 aspect-[2/3] shrink-0 book-spine-3d bg-[#EFE7D8] shadow-[0_16px_36px_-8px_rgba(31,26,22,0.25),0_4px_12px_-2px_rgba(31,26,22,0.12)] group-hover:scale-[1.02] transition-transform duration-300 cursor-pointer rounded-xs overflow-hidden"
+                className="relative w-24 sm:w-32 lg:w-36 aspect-[2/3] shrink-0 book-spine-3d bg-[#EFE7D8] shadow-[0_16px_36px_-8px_rgba(31,26,22,0.25),0_4px_12px_-2px_rgba(31,26,22,0.12)] group-hover:scale-[1.02] transition-transform duration-300 cursor-pointer rounded-xs overflow-hidden"
                 aria-label={activeBook.title}
               >
                 <Image
                   src={activeBook.coverImage}
                   alt={activeBook.coverImageAlt}
                   fill
-                  sizes="(max-width: 640px) 112px, 144px"
+                  sizes="(max-width: 640px) 96px, 144px"
                   className="object-cover outline outline-1 -outline-offset-1 outline-black/10"
                   priority
                 />
@@ -434,11 +434,11 @@ export function HeroBento() {
               </Link>
 
               {/* Editorial Details & Tagline */}
-              <div className="flex-1 min-w-0 space-y-2">
-                <div className="space-y-1">
+              <div className="flex-1 min-w-0 space-y-1.5 sm:space-y-2">
+                <div className="space-y-0.5 sm:space-y-1">
                   <Link
                     href={`/products/${activeBook.handle}`}
-                    className="block font-bold text-lg sm:text-xl text-[#1F1A16] hover:text-[#E8850A] transition-colors leading-tight line-clamp-2 optical-title"
+                    className="block font-bold text-base sm:text-lg lg:text-xl text-[#1F1A16] hover:text-[#E8850A] transition-colors leading-tight line-clamp-2 optical-title"
                   >
                     {activeBook.title}
                   </Link>
@@ -454,19 +454,19 @@ export function HeroBento() {
                 </div>
 
                 {/* Literary Quote / Synopsis Excerpt */}
-                <p className="text-[11px] sm:text-xs text-[#6B5C4F] italic leading-relaxed line-clamp-3 bg-[#FFFDF9]/80 border border-[#EAE0D2] p-2.5 rounded-xl shadow-2xs">
+                <p className="text-[11px] sm:text-xs text-[#6B5C4F] italic leading-normal sm:leading-relaxed line-clamp-2 sm:line-clamp-3 bg-[#FFFDF9]/80 border border-[#EAE0D2] p-2 sm:p-2.5 rounded-lg sm:rounded-xl shadow-2xs">
                   “{locale === "mr" ? activeMeta.taglineMr : activeMeta.taglineEn}”
                 </p>
 
                 {/* Badges Row */}
                 <div className="flex items-center gap-2 pt-0.5 flex-wrap">
                   {discountPercent && (
-                    <span className="text-[11px] font-bold text-[#236B2B] bg-[#236B2B]/10 px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] sm:text-[11px] font-bold text-[#236B2B] bg-[#236B2B]/10 px-2 py-0.5 rounded-full">
                       {discountPercent}% {locale === "mr" ? "सूट" : "OFF"}
                     </span>
                   )}
-                  <span className="text-[11px] text-[#7D6F63] flex items-center gap-1">
-                    <Award className="w-3.5 h-3.5 text-[#E8850A]" />
+                  <span className="text-[10px] sm:text-[11px] text-[#7D6F63] flex items-center gap-1">
+                    <Award className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#E8850A]" />
                     <span>{locale === "mr" ? "अधिकृत छापील आवृत्ती" : "Authentic Edition"}</span>
                   </span>
                 </div>
@@ -474,9 +474,9 @@ export function HeroBento() {
             </div>
 
             {/* Bottom Bar: Pricing & Tactile Quick Add (Optical Alignment) */}
-            <div className="pt-3 border-t border-[#DED0BC]/60 flex items-center justify-between gap-3 relative z-10">
-              <div className="flex items-baseline gap-2">
-                <span className="text-xl sm:text-2xl font-extrabold text-[#1F1A16] tabular-nums">
+            <div className="pt-2.5 sm:pt-3 border-t border-[#DED0BC]/60 flex items-center justify-between gap-2 relative z-10">
+              <div className="flex items-baseline gap-1.5 sm:gap-2 shrink-0">
+                <span className="text-lg sm:text-2xl font-extrabold text-[#1F1A16] tabular-nums">
                   ₹{activeBook.price}
                 </span>
                 {activeBook.compareAtPrice && (
@@ -487,10 +487,10 @@ export function HeroBento() {
               </div>
 
               {/* Optical Action Group */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <Link
                   href={`/products/${activeBook.handle}`}
-                  className="hidden sm:inline-flex text-xs font-semibold text-[#7D6F63] hover:text-[#1F1A16] transition-colors py-2 px-1"
+                  className="hidden md:inline-flex text-xs font-semibold text-[#7D6F63] hover:text-[#1F1A16] transition-colors py-2 px-1"
                 >
                   {locale === "mr" ? "तपशील पहा" : "Details"} →
                 </Link>
@@ -498,7 +498,7 @@ export function HeroBento() {
                 <button
                   type="button"
                   onClick={handleQuickAdd}
-                  className="inline-flex items-center gap-1.5 ps-4 pe-3.5 py-2.5 rounded-full bg-[#1F1A16] hover:bg-[#E8850A] text-white text-xs sm:text-sm font-bold active:scale-[0.96] transition-transform duration-150 ease-out shadow-sm hover:shadow cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8850A]"
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 sm:ps-4 sm:pe-3.5 sm:py-2.5 rounded-full bg-[#1F1A16] hover:bg-[#E8850A] text-white text-xs sm:text-sm font-bold active:scale-[0.96] transition-transform duration-150 ease-out shadow-sm hover:shadow cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8850A] shrink-0 min-h-[38px] sm:min-h-[42px]"
                   aria-label={`Add ${activeBook.title} to bag`}
                 >
                   {added ? (

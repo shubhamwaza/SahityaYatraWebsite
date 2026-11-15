@@ -123,7 +123,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
-            className="md:hidden p-2.5 -ml-2 text-[#1F1A16] hover:text-[#E8850A] active:scale-95 transition-transform rounded-xl cursor-pointer"
+            className="md:hidden w-11 h-11 flex items-center justify-center -ml-2 text-[#1F1A16] hover:text-[#E8850A] active:scale-95 transition-transform rounded-xl cursor-pointer"
             aria-label={t("menu")}
           >
             <Menu className="w-5 h-5" />
@@ -192,7 +192,7 @@ export function Header() {
             <button
               type="button"
               onClick={openCart}
-              className="p-2.5 text-[#1F1A16] hover:text-[#E8850A] active:scale-95 transition-all relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8850A] rounded-full bg-white/80 hover:bg-white border border-[#DED0BC]/80 shadow-2xs cursor-pointer"
+              className="w-10 h-10 flex items-center justify-center text-[#1F1A16] hover:text-[#E8850A] active:scale-95 transition-all relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8850A] rounded-full bg-white/80 hover:bg-white border border-[#DED0BC]/80 shadow-2xs cursor-pointer"
               aria-label={t("cart")}
             >
               <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -217,12 +217,12 @@ export function Header() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={searchT("placeholder")}
-              className="w-full pl-9 pr-20 py-2 bg-white border border-[#DED0BC] rounded-full text-xs sm:text-sm text-[#1F1A16] placeholder-[#8C7B6E] focus:outline-none focus:ring-2 focus:ring-[#E8850A] shadow-2xs"
+              className="w-full pl-9 pr-20 py-2.5 bg-white border border-[#DED0BC] rounded-full text-sm text-[#1F1A16] placeholder-[#8C7B6E] focus:outline-none focus:ring-2 focus:ring-[#E8850A] shadow-2xs h-10"
             />
-            <Search className="w-3.5 h-3.5 text-[#8C7B6E] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <Search className="w-4 h-4 text-[#8C7B6E] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <button
               type="submit"
-              className="absolute right-1 top-1/2 -translate-y-1/2 px-3 py-1 bg-[#E8850A] text-white text-xs font-semibold rounded-full active:scale-95 transition-transform cursor-pointer"
+              className="absolute right-1 top-1/2 -translate-y-1/2 px-3.5 py-1.5 min-h-[32px] bg-[#E8850A] text-white text-xs font-semibold rounded-full active:scale-95 transition-transform cursor-pointer"
             >
               {t("search")}
             </button>

@@ -156,6 +156,15 @@ body {
   padding-inline: 1.25rem;
 }
 
+/* Hide scrollbar for Chrome, Safari, Opera, Edge, Firefox */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 @media (min-width: 640px) {
   .container-site {
     padding-inline: 2rem;
